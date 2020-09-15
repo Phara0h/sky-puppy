@@ -1,0 +1,39 @@
+{
+  "name": "sky-puppy",
+  "version": "0.1.0",
+  "description": "A easy to use reliable health checking service with Prometheus export",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "SKY_PUPPY_CONFIG_PATH=./test node src/index.js",
+    "version": "auto-changelog -l false --sort-commits date-desc --package --hide-credit --template changelog-template.hbs -p && mdsquash -i  CHANGELOG.md && git add -A CHANGELOG.md && git add -A README.md",
+    "postversion": "git push &&  git push --tags && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Phara0h/sky-puppy.git"
+  },
+  "keywords": [
+    "prometheus",
+    "health",
+    "check",
+    "request",
+    "service"
+  ],
+  "author": "Phara0h",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Phara0h/sky-puppy/issues"
+  },
+  "homepage": "https://github.com/Phara0h/sky-puppy#readme",
+  "dependencies": {
+    "auto-changelog": "^2.2.0",
+    "fasquest": "^2.4.0",
+    "fastify": "^2.15.3",
+    "jsdoc-to-markdown": "^6.0.1",
+    "mdsquash": "^1.0.5",
+    "nbars": "^1.0.1",
+    "nstats": "^2.1.5",
+    "postgen": "^4.1.5"
+  }
+}

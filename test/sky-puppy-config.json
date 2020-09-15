@@ -1,0 +1,138 @@
+{
+    "alerters": {
+        "discord_down": {
+            "uri": "http://127.0.0.1:4270/alert/test",
+            "json": true,
+            "method": "PUT",
+            "body": {
+            "embeds": [
+              {
+                "title": "{{service_name}} is {{alert_type}}!",
+                "description": "This service was healthy for {{last_healthy_total_duration}} seconds!",
+                "color": 14828098,
+                "footer": {
+                  "text": ""
+                },
+                "timestamp": "{{timestamp}}"
+              }
+            ],
+            "username": "Sky Puppy",
+            "avatar_url": "https://i.imgur.com/J5vIVSt.png"
+          }
+        },
+        "discord_unhealthy": {
+            "uri": "http://127.0.0.1:4270/alert/test",
+            "json": true,
+            "method": "PUT",
+            "body": {
+            "embeds": [
+              {
+                "title": "{{service_name}} is {{alert_type}}!",
+                "description": "This service was healthy for {{last_healthy_total_duration}} seconds!",
+                "color": 14852674,
+                "footer": {
+                  "text": ""
+                },
+                "timestamp": "{{timestamp}}"
+              }
+            ],
+            "username": "Sky Puppy",
+            "avatar_url": "https://i.imgur.com/J5vIVSt.png"
+          }
+        },
+        "discord_healthy": {
+            "uri": "http://127.0.0.1:4270/alert/test",
+            "json": true,
+            "method": "PUT",
+            "body": {
+            "embeds": [
+              {
+                "title": "{{service_name}} is {{alert_type}}!",
+                "description": "Carry on, looks like things are back! We were down for {{last_unhealthy_total_duration}} seconds.",
+                "color": 6480450,
+                "footer": {
+                  "text": ""
+                },
+                "timestamp": "{{timestamp}}"
+              }
+            ],
+            "username": "Sky Puppy",
+            "avatar_url": "https://i.imgur.com/3rfFeOu.png"
+          }
+        }
+    },
+    "services": {
+      "timeout-test": {
+        "interval":5,
+          "request": {
+              "uri": "http://127.0.0.1:4270/wait/random/0/1",
+              "timeout": 2
+          },
+          "expected_response_time": 500,
+          "alerts": [
+              {
+                  "type": "down",
+                  "alerter": "discord_down"
+              },
+              {
+                  "type": "unhealthy_response_time",
+                  "for": 1,
+                  "alerter": "discord_unhealthy"
+              },
+              {
+                  "type": "healthy",
+                  "alerter": "discord_healthy"
+              }
+          ]
+      },
+        "status-test": {
+          "interval":5,
+            "request": {
+                "uri": "http://127.0.0.1:4270/error/random",
+                "timeout": 2
+            },
+            "start_delay":1,
+            "alerts": [
+                {
+                    "type": "down",
+                    "alerter": "discord_down"
+                },
+                {
+                    "type": "unhealthy_status",
+                    "for": 1,
+                    "alerter": "discord_unhealthy"
+                },
+                {
+                    "type": "healthy",
+                    "alerter": "discord_healthy"
+                }
+            ]
+        },
+        "status-fast-test": {
+          "interval":0.25,
+            "request": {
+                "uri": "http://127.0.0.1:4271/error/flipflop",
+                "timeout": 2
+            },
+            "start_delay":2,
+            "alerts": [
+                {
+                    "type": "down",
+                    "alerter": "discord_down"
+                },
+                {
+                    "type": "unhealthy_status",
+                    "for": 1,
+                    "alerter": "discord_unhealthy"
+                },
+                {
+                    "type": "healthy",
+                    "alerter": "discord_healthy"
+                }
+            ]
+        }
+    },
+    "skypuppy": {
+        "version": "1.0.0"
+    }
+}

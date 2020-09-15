@@ -1,0 +1,74 @@
+const fs = require('fs');
+var path = require('path');
+class Config {
+  constructor(config) {
+    this.version = require(path.dirname(require.main.filename)+'/../package.json').version;
+    try {
+      this.path = path.resolve(process.env.SKY_PUPPY_CONFIG_PATH || './') + '/sky-puppy-config.json';
+      this.settings = JSON.parse(fs.readFileSync(this.path));
+    } catch (e) {
+      this.path = path.dirname('./') + '/sky-puppy-config.json';
+      this.settings = {};
+      console.log('Error loading config. Creating and using default one at ' + this.path);
+      this.saveConfig();
+    }
+    if(!this.alerters) {
+      this.settings.alerters = {};
+    }
+
+    if(!this.services) {
+      this.settings.services = {};
+    }
+
+    this.settings.skypuppy = this.settings.skypuppy || {
+      version: this.version
+    }
+  }
+
+  addService(name,service) {
+    try {
+      this.services[name] = service;
+      this.saveConfig();
+      return this.services[name];
+    } catch (e) {
+      return null;
+    }
+  }
+
+  addAlerter(name,service) {
+    try {
+      this.alerters[name] = service;
+      this.saveConfig();
+      return this.alerters[name];
+    } catch (e) {
+      return null;
+    }
+  }
+
+  getService(name) {
+    return this.services[name];
+  }
+  getAlerter(name) {
+    return this.alerters[name];
+  }
+
+  get services() {
+    return this.settings.services;
+  }
+
+  get alerters() {
+    return this.settings.alerters;
+  }
+
+  get skypuppy() {
+    return this.settings.skypuppy;
+  }
+
+
+
+  saveConfig() {
+    console.log('Saving Config');
+    fs.writeFileSync(this.path, JSON.stringify(this.settings, null, 4));
+  }
+}
+module.exports = Config;
