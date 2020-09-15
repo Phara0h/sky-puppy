@@ -3,6 +3,7 @@ var path = require('path');
 class Config {
   constructor(config) {
     this.version = require(path.dirname(require.main.filename)+'/../package.json').version;
+    process.title = "Sky Puppy v"+this.version;
     try {
       this.path = path.resolve(process.env.SKY_PUPPY_CONFIG_PATH || './') + '/sky-puppy-config.json';
       this.settings = JSON.parse(fs.readFileSync(this.path));
