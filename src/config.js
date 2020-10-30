@@ -17,7 +17,6 @@ class Config {
       console.log(
         'Error loading config. Creating and using default one at ' + this.path
       );
-      this.saveConfig();
     }
     if (!this.alerters) {
       this.settings.alerters = {};
@@ -27,9 +26,16 @@ class Config {
       this.settings.services = {};
     }
 
+    if (!this.checkers) {
+      this.settings.checkers = {
+        request: {}
+      };
+    }
+
     this.settings.skypuppy = this.settings.skypuppy || {
       version: this.version
     };
+    this.saveConfig();
   }
 
   addService(name, service) {
@@ -85,6 +91,13 @@ class Config {
 
   get alerters() {
     return this.settings.alerters;
+  }
+
+  getChecker(name) {
+    return this.checkers[name];
+  }
+  get checkers() {
+    return this.settings.checkers;
   }
 
   get skypuppy() {

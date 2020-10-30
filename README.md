@@ -15,6 +15,10 @@ npm install -g sky-puppy
 sky-puppy
 ```
 
+## Checkers
+
+- request (native)
+
 ## Sample Config
 
 Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ran at.
@@ -142,4 +146,3 @@ All notable changes to this project will be documented in this file. Dates are d
 
 - init commit config based is done REST endpoints to come [`b03ca2e`](https://github.com/Phara0h/sky-puppy/commit/b03ca2ee43ac5754f020d1963dcb9e201cd47e0d)
 - Initial commit [`b7535a3`](https://github.com/Phara0h/sky-puppy/commit/b7535a3a3990fe081f932dc6e1079a86bdf9842f)
-

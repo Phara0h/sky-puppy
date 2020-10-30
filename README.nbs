@@ -87,14 +87,17 @@ Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ra
     "your_service": {
       "interval": 3,
       "start_delay": 2,
-      "request": {
-        "uri": "http://127.0.0.1/a/cool/endpoint",
-        "timeout": 2,
-        "json": true,
-        "method": "PUT",
-        "body": {
-          "test": "sweet"
-        },
+      "checker": {
+          "name": "request",
+          "settings": {
+            "uri": "http://127.0.0.1/a/cool/endpoint",
+            "timeout": 2,
+            "json": true,
+            "method": "PUT",
+            "body": {
+              "test": "sweet"
+            },
+          }
       },
       "alerts": [
         {

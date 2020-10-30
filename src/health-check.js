@@ -1,18 +1,4 @@
 const fs = require('fs');
-var fasquest = require('fasquest');
-const client = {
-  https: require('https'),
-  http: require('http')
-};
-
-fasquest.agent = {
-  http: new client.http.Agent({
-    keepAlive: false
-  }),
-  https: new client.https.Agent({
-    keepAlive: false
-  })
-};
 
 const Config = require('./config.js');
 var config = new Config();
@@ -20,17 +6,45 @@ const Alerts = require('./alerts.js');
 
 class HealthCheck {
   constructor(stats, nbars) {
+    this.checkers = {};
     this.services = {};
     this.alerters = {};
     this.stats = stats;
     this.alerts = new Alerts(stats, config, nbars);
-
+    var checkersKeys = Object.keys(config.checkers);
     var servicesKeys = Object.keys(config.services);
 
+    for (var i = 0; i < checkersKeys.length; i++) {
+      var checker = {
+        ...config.getChecker(checkersKeys[i])
+      };
+
+      if (checkersKeys[i] == 'request') {
+        this.checkers[checkersKeys[i]] = {
+          mod: require('./checkers/request'),
+          settings: checker,
+          name: checkersKeys[i]
+        };
+      } else {
+        try {
+          this.checkers[checkersKeys[i]] = {
+            mod: require(checker.name),
+            settings: checker,
+            name: checkersKeys[i]
+          };
+        } catch (e) {
+          console.error(`Failed to load ${checkersKeys[i]}!`);
+          process.exit();
+        }
+      }
+    }
+
     for (var i = 0; i < servicesKeys.length; i++) {
-      this.startService(servicesKeys[i], {
+      var service = {
         ...config.getService(servicesKeys[i])
-      });
+      };
+
+      this.startService(servicesKeys[i], service);
     }
   }
 
@@ -94,13 +108,13 @@ class HealthCheck {
     return false;
   }
 
-  startService(name, service) {
+  async startService(name, service) {
     if (!this.services[name]) {
       console.log(`Starting service ${name} ...`);
       var nService = {
         name,
         enabled: true,
-        delete: false,
+        checker: {},
         config: {
           ...service,
           interval: Math.round((service.interval || 5) * 1000), // default 5 seconds
@@ -119,23 +133,22 @@ class HealthCheck {
           }
         }
       };
+      var checker = this.checkers[nService.config.checker.name];
+      var checkerSettings = {};
 
-      nService.config.request.method = nService.config.request.method || 'GET';
-      nService.config.request.timeout = Math.round(
-        (nService.config.request.timeout || 60) * 1000
-      );
-      nService.config.request.resolveWithFullResponse = true;
-      nService.config.request.simple = false;
-
-      nService.config.expected_response_time =
-        service.expected_response_time || nService.config.request.timeout;
-
-      if (!nService.config.request.headers) {
-        nService.config.request.headers = {};
+      if (checker.settings) {
+        checkerSettings = {
+          ...checker.settings,
+          ...nService.config.checker.settings
+        };
+      } else {
+        checkerSettings = {
+          ...nService.config.checker.settings
+        };
       }
-      nService.config.request.headers[
-        'User-Agent'
-      ] = `Sky-Puppy / ${config.skypuppy.version} (Health Check Service)`;
+
+      nService.checker = await checker.mod(config, nService, checkerSettings);
+      await nService.checker.init();
 
       this.services[name] = nService;
 
@@ -157,11 +170,11 @@ class HealthCheck {
       const oldStatus = service.status.up;
 
       try {
-        var res = await fasquest.request(service.config.request);
+        var res = await service.checker.check();
 
         service.status.time =
           Number(process.hrtime.bigint() - startTime) / 1000000;
-        service.status.code = res.statusCode;
+        service.status.code = res.code;
         service.status.up = 1;
 
         if (service.config.expected_status != service.status.code) {
@@ -193,7 +206,8 @@ class HealthCheck {
         service.status.count.down++;
         service.status.up = -1;
         service.status.code = 0;
-        console.log(service.name, e.err.message);
+
+        console.log(service.name, e.message);
       }
 
       if (service.status.last_status == null) {
