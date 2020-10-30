@@ -1,5 +1,11 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+### [v1.0.0](https://github.com/Phara0h/sky-puppy/compare/v0.3.0...v1.0.0)
+
+> 30 October 2020
+
+- Added module based checkers! Now you can write custom checkers to check any thing. [`344b6f0`](https://github.com/Phara0h/sky-puppy/commit/344b6f02dfa4b31d0720b7c047d034a7f118684a)
+
 #### [v0.3.0](https://github.com/Phara0h/sky-puppy/compare/v0.2.1...v0.3.0)
 
 > 30 October 2020

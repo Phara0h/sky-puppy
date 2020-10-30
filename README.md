@@ -15,10 +15,6 @@ npm install -g sky-puppy
 sky-puppy
 ```
 
-## Checkers
-
-- request (native)
-
 ## Sample Config
 
 Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ran at.
@@ -91,14 +87,17 @@ Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ra
     "your_service": {
       "interval": 3,
       "start_delay": 2,
-      "request": {
-        "uri": "http://127.0.0.1/a/cool/endpoint",
-        "timeout": 2,
-        "json": true,
-        "method": "PUT",
-        "body": {
-          "test": "sweet"
-        },
+      "checker": {
+          "name": "request",
+          "settings": {
+            "uri": "http://127.0.0.1/a/cool/endpoint",
+            "timeout": 2,
+            "json": true,
+            "method": "PUT",
+            "body": {
+              "test": "sweet"
+            },
+          }
       },
       "alerts": [
         {
@@ -127,6 +126,12 @@ Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ra
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+### [v1.0.0](https://github.com/Phara0h/sky-puppy/compare/v0.3.0...v1.0.0)
+
+> 30 October 2020
+
+- Added module based checkers! Now you can write custom checkers to check any thing. [`344b6f0`](https://github.com/Phara0h/sky-puppy/commit/344b6f02dfa4b31d0720b7c047d034a7f118684a)
+
 #### [v0.3.0](https://github.com/Phara0h/sky-puppy/compare/v0.2.1...v0.3.0)
 
 > 30 October 2020
@@ -146,3 +151,4 @@ All notable changes to this project will be documented in this file. Dates are d
 
 - init commit config based is done REST endpoints to come [`b03ca2e`](https://github.com/Phara0h/sky-puppy/commit/b03ca2ee43ac5754f020d1963dcb9e201cd47e0d)
 - Initial commit [`b7535a3`](https://github.com/Phara0h/sky-puppy/commit/b7535a3a3990fe081f932dc6e1079a86bdf9842f)
+
