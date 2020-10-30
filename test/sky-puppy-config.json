@@ -1,4 +1,10 @@
 {
+    "checkers": {
+        "request": {},
+        "sky-puppy-checker-template": {
+            "foo": "bar"
+        }
+    },
     "alerters": {
         "discord_down": {
             "uri": "http://127.0.0.1:4270/alert/test",
@@ -139,12 +145,34 @@
                     "alerter": "discord_healthy"
                 }
             ]
+        },
+        "sky-puppy-checker-template-test": {
+            "interval": 2,
+            "checker": {
+                "name": "sky-puppy-checker-template",
+                "settings": {
+                    "bar": "test"
+                }
+            },
+            "expected_response_time": 500,
+            "alerts": [
+                {
+                    "type": "down",
+                    "alerter": "discord_down"
+                },
+                {
+                    "type": "unhealthy_response_time",
+                    "for": 1,
+                    "alerter": "discord_unhealthy"
+                },
+                {
+                    "type": "healthy",
+                    "alerter": "discord_healthy"
+                }
+            ]
         }
     },
     "skypuppy": {
         "version": "1.0.0"
-    },
-    "checkers": {
-        "request": {}
     }
 }
