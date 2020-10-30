@@ -1,0 +1,139 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 9
+  },
+  "ignorePatterns": ["**/sdk/**", "**/gitlab-ci/**"],
+  "extends": ["prettier"],
+  "plugins": ["prettier"],
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "never"],
+    "no-cond-assign": 2,
+    "no-constant-condition": 2,
+    "no-control-regex": 2,
+    "no-debugger": 2,
+    "no-dupe-args": 2,
+    "no-dupe-keys": 2,
+    "no-duplicate-case": 2,
+    "no-empty-character-class": 2,
+    "no-extra-semi": 2,
+    "no-func-assign": 2,
+    "no-invalid-regexp": 2,
+    "no-irregular-whitespace": 2,
+    "no-negated-in-lhs": 2,
+    "no-obj-calls": 2,
+    "no-unreachable": 2,
+    "use-isnan": 2,
+    "no-unexpected-multiline": 2,
+    "curly": 2,
+    "dot-location": [2, "property"],
+    "no-alert": 2,
+    "no-caller": 1,
+    "no-eval": 1,
+    "no-multi-spaces": 2,
+    "no-unused-vars": [
+      2,
+      {
+        "vars": "all",
+        "args": "none"
+      }
+    ],
+    "array-bracket-spacing": [2, "never"],
+    "block-spacing": [2, "never"],
+    "brace-style": [
+      2,
+      "1tbs",
+      {
+        "allowSingleLine": true
+      }
+    ],
+    "camelcase": [
+      "error",
+      {
+        "properties": "never"
+      }
+    ],
+    "comma-spacing": [
+      2,
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "comma-style": [2, "last"],
+    "computed-property-spacing": [2, "never"],
+    "consistent-this": [2, "self"],
+    "eol-last": 2,
+    "func-style": [2, "declaration", { "allowArrowFunctions": true }],
+    "indent": [
+      2,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "key-spacing": [
+      2,
+      {
+        "beforeColon": false,
+        "afterColon": true
+      }
+    ],
+    "keyword-spacing": 2,
+    "lines-around-comment": [
+      2,
+      {
+        "beforeBlockComment": true,
+        "beforeLineComment": false,
+        "allowBlockStart": true
+      }
+    ],
+    "linebreak-style": [2, "unix"],
+    "new-cap": 2,
+    "new-parens": 2,
+    "newline-after-var": [2, "always"],
+    "no-array-constructor": 2,
+    "no-inline-comments": 2,
+    "no-lonely-if": 2,
+    "no-mixed-spaces-and-tabs": 2,
+    "no-multiple-empty-lines": [
+      2,
+      {
+        "max": 1
+      }
+    ],
+    "no-nested-ternary": 0,
+    "no-new-object": 2,
+    "no-spaced-func": 2,
+    "no-trailing-spaces": 2,
+    "object-curly-spacing": [2, "always"],
+    "one-var": [2, "never"],
+    "operator-linebreak": [2, "after"],
+    "quote-props": [2, "as-needed"],
+    "quotes": [2, "single", "avoid-escape"],
+    "semi-spacing": 2,
+    "semi": [2, "always"],
+    "sort-vars": 2,
+    "space-before-blocks": 2,
+    "space-before-function-paren": [
+      2,
+      {
+        "anonymous": "never",
+        "named": "never",
+        "asyncArrow": "always"
+      }
+    ],
+    "space-in-parens": [2, "never"],
+    "space-infix-ops": 2,
+    "space-unary-ops": [
+      2,
+      {
+        "words": true,
+        "nonwords": false
+      }
+    ]
+  }
+}

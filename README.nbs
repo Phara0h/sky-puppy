@@ -1,5 +1,124 @@
 # Sky Puppy
-A easy to use reliable health checking service with Prometheus export
+A easy to use reliable endpoint coordinator / health checking service with Prometheus export
 
+[Sky Puppy Postman Collection](https://documenter.getpostman.com/view/208035/TVYKawgU)
+
+## Install
+
+```bash
+npm install -g sky-puppy
+```
+
+## Run
+
+```bash
+sky-puppy
+```
+
+## Sample Config
+
+Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ran at.
+
+```json
+{
+  "alerters": {
+    "discord_down": {
+      "uri": "http://discord.com",
+      "json": true,
+      "method": "PUT",
+      "body": {
+        "embeds": [
+          {
+            "title": "{{service_name}} is {{alert_type}}!",
+            "description": "This service was healthy for {{last_healthy_total_duration}} seconds!",
+            "color": 14828098,
+            "footer": {
+              "text": ""
+            },
+            "timestamp": "{{timestamp}}"
+          }
+        ],
+        "username": "Sky Puppy",
+        "avatar_url": "https://i.imgur.com/J5vIVSt.png"
+      }
+    },
+    "discord_unhealthy": {
+      "uri": "http://discord.com",
+      "json": true,
+      "method": "PUT",
+      "body": {
+        "embeds": [
+          {
+            "title": "{{service_name}} is {{alert_type}}!",
+            "description": "This service was healthy for {{last_healthy_total_duration}} seconds!",
+            "color": 14852674,
+            "footer": {
+              "text": ""
+            },
+            "timestamp": "{{timestamp}}"
+          }
+        ],
+        "username": "Sky Puppy",
+        "avatar_url": "https://i.imgur.com/J5vIVSt.png"
+      }
+    },
+    "discord_healthy": {
+      "uri": "http://discord.com",
+      "json": true,
+      "method": "PUT",
+      "body": {
+        "embeds": [
+          {
+            "title": "{{service_name}} is {{alert_type}}!",
+            "description": "Carry on, looks like things are back! We were down for {{last_unhealthy_total_duration}} seconds.",
+            "color": 6480450,
+            "footer": {
+              "text": ""
+            },
+            "timestamp": "{{timestamp}}"
+          }
+        ],
+        "username": "Sky Puppy",
+        "avatar_url": "https://i.imgur.com/3rfFeOu.png"
+      }
+    }
+  },
+  "services": {
+    "your_service": {
+      "interval": 3,
+      "start_delay": 2,
+      "request": {
+        "uri": "http://127.0.0.1/a/cool/endpoint",
+        "timeout": 2,
+        "json": true,
+        "method": "PUT",
+        "body": {
+          "test": "sweet"
+        },
+      },
+      "alerts": [
+        {
+          "type": "down",
+          "alerter": "discord_down"
+        },
+        {
+          "type": "unhealthy",
+          "alerter": "discord_unhealthy"
+        },
+        {
+          "type": "healthy",
+          "alerter": "discord_healthy"
+        }
+      ]
+    }
+  },
+  "skypuppy": {
+    "version": "1.0.0"
+  }
+}
+
+```
+
+## Changelog
 
 {{doc1}}

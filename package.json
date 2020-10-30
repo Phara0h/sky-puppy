@@ -13,6 +13,9 @@
     "type": "git",
     "url": "git+https://github.com/Phara0h/sky-puppy.git"
   },
+  "bin": {
+    "sky-puppy": "./src/index.js"
+  },
   "keywords": [
     "prometheus",
     "health",
@@ -27,13 +30,20 @@
   },
   "homepage": "https://github.com/Phara0h/sky-puppy#readme",
   "dependencies": {
-    "auto-changelog": "^2.2.0",
-    "fasquest": "^2.4.0",
-    "fastify": "^2.15.3",
-    "jsdoc-to-markdown": "^6.0.1",
-    "mdsquash": "^1.0.5",
+    "fasquest": "^3.0.1",
+    "fastify": "^3.7.0",
     "nbars": "^1.0.1",
-    "nstats": "^2.1.5",
-    "postgen": "^4.1.5"
+    "nstats": "^4.1.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.8.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.0.5",
+    "prettier-eslint": "^11.0.0",
+    "jsdoc-to-markdown": "^6.0.1",
+    "auto-changelog": "^2.2.0",
+    "mdsquash": "^1.0.5",
+    "postgen": "^4.6.0"
   }
 }

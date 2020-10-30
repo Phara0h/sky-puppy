@@ -1,32 +1,38 @@
 const fs = require('fs');
 var path = require('path');
+
 class Config {
-  constructor(config) {
-    this.version = require(path.dirname(require.main.filename)+'/../package.json').version;
-    process.title = "Sky Puppy v"+this.version;
+  constructor() {
+    this.version = require(path.dirname(require.main.filename) +
+      '/../package.json').version;
+    process.title = 'Sky Puppy v' + this.version;
     try {
-      this.path = path.resolve(process.env.SKY_PUPPY_CONFIG_PATH || './') + '/sky-puppy-config.json';
+      this.path =
+        path.resolve(process.env.SKY_PUPPY_CONFIG_PATH || './') +
+        '/sky-puppy-config.json';
       this.settings = JSON.parse(fs.readFileSync(this.path));
     } catch (e) {
       this.path = path.dirname('./') + '/sky-puppy-config.json';
       this.settings = {};
-      console.log('Error loading config. Creating and using default one at ' + this.path);
+      console.log(
+        'Error loading config. Creating and using default one at ' + this.path
+      );
       this.saveConfig();
     }
-    if(!this.alerters) {
+    if (!this.alerters) {
       this.settings.alerters = {};
     }
 
-    if(!this.services) {
+    if (!this.services) {
       this.settings.services = {};
     }
 
     this.settings.skypuppy = this.settings.skypuppy || {
       version: this.version
-    }
+    };
   }
 
-  addService(name,service) {
+  addService(name, service) {
     try {
       this.services[name] = service;
       this.saveConfig();
@@ -36,7 +42,24 @@ class Config {
     }
   }
 
-  addAlerter(name,service) {
+  deleteService(name) {
+    if (this.services[name]) {
+      delete this.services[name];
+      this.saveConfig();
+      return true;
+    } else {
+      throw new Error('No service with that name in config.');
+    }
+  }
+
+  getService(name) {
+    return this.services[name];
+  }
+  get services() {
+    return this.settings.services;
+  }
+
+  addAlerter(name, service) {
     try {
       this.alerters[name] = service;
       this.saveConfig();
@@ -46,15 +69,18 @@ class Config {
     }
   }
 
-  getService(name) {
-    return this.services[name];
-  }
-  getAlerter(name) {
-    return this.alerters[name];
+  deleteAlerter(name) {
+    if (this.alerters[name]) {
+      delete this.alerters[name];
+      this.saveConfig();
+      return true;
+    } else {
+      throw new Error('No alerter with that name in config.');
+    }
   }
 
-  get services() {
-    return this.settings.services;
+  getAlerter(name) {
+    return this.alerters[name];
   }
 
   get alerters() {
@@ -64,8 +90,6 @@ class Config {
   get skypuppy() {
     return this.settings.skypuppy;
   }
-
-
 
   saveConfig() {
     console.log('Saving Config');
