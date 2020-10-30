@@ -1,5 +1,11 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.0.2](https://github.com/Phara0h/sky-puppy/compare/v1.0.1...v1.0.2)
+
+> 30 October 2020
+
+- Added sky-puppy-checker-template to tests and readme [`a927cdf`](https://github.com/Phara0h/sky-puppy/commit/a927cdf104bb2f8acf7baa99485ebd2135d2427c)
+
 #### [v1.0.1](https://github.com/Phara0h/sky-puppy/compare/v1.0.0...v1.0.1)
 
 > 30 October 2020

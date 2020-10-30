@@ -15,6 +15,15 @@ npm install -g sky-puppy
 sky-puppy
 ```
 
+## Checkers
+
+##### Test
+- [sky-puppy-checker-template](https://github.com/Phara0h/sky-puppy-checker-template) : A Sky Puppy template to use to create your own checkers
+
+##### HTTP/HTTPS
+- request (native)
+
+
 ## Sample Config
 
 Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ran at.
@@ -125,6 +134,12 @@ Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ra
 ## Changelog
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
+
+#### [v1.0.2](https://github.com/Phara0h/sky-puppy/compare/v1.0.1...v1.0.2)
+
+> 30 October 2020
+
+- Added sky-puppy-checker-template to tests and readme [`a927cdf`](https://github.com/Phara0h/sky-puppy/commit/a927cdf104bb2f8acf7baa99485ebd2135d2427c)
 
 #### [v1.0.1](https://github.com/Phara0h/sky-puppy/compare/v1.0.0...v1.0.1)
 
