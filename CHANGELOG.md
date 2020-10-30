@@ -1,10 +1,15 @@
-### Changelog
-
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
+
+#### [v0.3.0](https://github.com/Phara0h/sky-puppy/compare/v0.2.1...v0.3.0)
+
+> 30 October 2020
+
+- Added endpoints, Added postman docs, Fixed bugs and more! [`5d614eb`](https://github.com/Phara0h/sky-puppy/commit/5d614eb20b62ba5b616f67aeffddda1bfd5575de)
+- added process tile [`f6f9a56`](https://github.com/Phara0h/sky-puppy/commit/f6f9a56b35b31797f9409c97df4c3b3dc5ae5a4b)
 
 #### [v0.2.1](https://github.com/Phara0h/sky-puppy/compare/v0.2.0...v0.2.1)
 
-> 15 September 2020
+> 14 September 2020
 
 - Update README.nbs [`505209a`](https://github.com/Phara0h/sky-puppy/commit/505209afdac682daca37284a5f69fd98b14b8145)
 
