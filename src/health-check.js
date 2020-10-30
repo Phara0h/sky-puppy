@@ -28,7 +28,7 @@ class HealthCheck {
       } else {
         try {
           this.checkers[checkersKeys[i]] = {
-            mod: require(checker.name),
+            mod: require(checkersKeys[i]),
             settings: checker,
             name: checkersKeys[i]
           };
