@@ -1,5 +1,11 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.0.1](https://github.com/Phara0h/sky-puppy/compare/v1.0.0...v1.0.1)
+
+> 30 October 2020
+
+- Fixed bug around checkers name [`7674805`](https://github.com/Phara0h/sky-puppy/commit/7674805fae0b7e39b56dbbeef18ede9216e22956)
+
 ### [v1.0.0](https://github.com/Phara0h/sky-puppy/compare/v0.3.0...v1.0.0)
 
 > 30 October 2020
