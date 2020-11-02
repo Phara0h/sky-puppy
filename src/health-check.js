@@ -135,6 +135,7 @@ class HealthCheck {
       };
       var checker = this.checkers[nService.config.checker.name];
       var checkerSettings = {};
+      var checkerCodeMessages = null;
 
       if (checker.settings) {
         checkerSettings = {
@@ -147,6 +148,21 @@ class HealthCheck {
         };
       }
 
+      if (
+        checker.settings &&
+        checker.settings.code_messages &&
+        nService.config.checker.code_messages
+      ) {
+        checkerCodeMessages = {
+          ...checker.settings.code_messages,
+          ...nService.config.checker.code_messages
+        };
+      } else if (nService.config.checker.code_messages) {
+        checkerCodeMessages = {
+          ...nService.config.checker.code_messages
+        };
+      }
+      nService.code_messages = checkerCodeMessages;
       nService.checker = await checker.mod(config, nService, checkerSettings);
       await nService.checker.init();
 
@@ -164,10 +180,23 @@ class HealthCheck {
     return config;
   }
 
+  _mapMessages(code, message, service) {
+    if (service.code_messages) {
+      var codes = Object.keys(service.code_messages);
+
+      for (var i = 0; i < codes.length; i++) {
+        if (codes[i] == code) {
+          return service.code_messages[codes[i]];
+        }
+      }
+    }
+    return message || '';
+  }
+
   async _runCheck(service) {
     if (service && service.enabled) {
       const startTime = process.hrtime.bigint();
-      const oldStatus = service.status.up;
+      // const oldStatus = service.status.up;
 
       try {
         var res = await service.checker.check();
@@ -175,6 +204,11 @@ class HealthCheck {
         service.status.time =
           Number(process.hrtime.bigint() - startTime) / 1000000;
         service.status.code = res.code;
+        service.status.message = this._mapMessages(
+          res.code,
+          res.message,
+          service
+        );
         service.status.up = 1;
 
         if (service.config.expected_status != service.status.code) {

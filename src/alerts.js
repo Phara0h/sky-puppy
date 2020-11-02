@@ -157,16 +157,17 @@ class Alerts {
           {
             alert_type: alert.type,
             service_name: service.name,
+            message: service.status.message,
             timestamp: new Date().toISOString(),
             last_unhealthy_total_duration:
               service.status.last_unhealthy_total_duration || 'Unknown',
-            last_healthy_total_duration: service.status.last_healthy
-              ? (
-                  Number(
-                    process.hrtime.bigint() - service.status.last_healthy
-                  ) / 1000000000
-                ).toFixed(2)
-              : 'Unknown'
+            last_healthy_total_duration: service.status.last_healthy ?
+              (
+                Number(
+                  process.hrtime.bigint() - service.status.last_healthy
+                ) / 1000000000
+              ).toFixed(2) :
+              'Unknown'
           }
         );
 

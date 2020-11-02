@@ -43,7 +43,8 @@ class Request {
       var res = await fasquest.request(this.settings);
 
       return {
-        code: res.statusCode
+        code: res.statusCode,
+        message: res.body
       };
     } catch (e) {
       throw e.err;

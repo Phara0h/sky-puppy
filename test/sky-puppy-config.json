@@ -2,7 +2,11 @@
     "checkers": {
         "request": {},
         "sky-puppy-checker-template": {
-            "foo": "bar"
+            "foo": "bar",
+            "code_messages": {
+                "200": "Override me plz",
+                "500": "Yikes its down"
+            }
         }
     },
     "alerters": {
@@ -14,7 +18,7 @@
                 "embeds": [
                     {
                         "title": "{{service_name}} is {{alert_type}}!",
-                        "description": "This service was healthy for {{last_healthy_total_duration}} seconds!",
+                        "description": "This service was healthy for {{last_healthy_total_duration}} seconds! {{message}}",
                         "color": 14828098,
                         "footer": {
                             "text": ""
@@ -34,7 +38,7 @@
                 "embeds": [
                     {
                         "title": "{{service_name}} is {{alert_type}}!",
-                        "description": "This service was healthy for {{last_healthy_total_duration}} seconds!",
+                        "description": "This service was healthy for {{last_healthy_total_duration}} seconds! {{message}}",
                         "color": 14852674,
                         "footer": {
                             "text": ""
@@ -54,7 +58,7 @@
                 "embeds": [
                     {
                         "title": "{{service_name}} is {{alert_type}}!",
-                        "description": "Carry on, looks like things are back! We were down for {{last_unhealthy_total_duration}} seconds.",
+                        "description": "Carry on, looks like things are back! We were down for {{last_unhealthy_total_duration}} seconds. {{message}}",
                         "color": 6480450,
                         "footer": {
                             "text": ""
@@ -152,6 +156,9 @@
                 "name": "sky-puppy-checker-template",
                 "settings": {
                     "bar": "test"
+                },
+                "code_messages": {
+                    "200": "Yup its up"
                 }
             },
             "expected_response_time": 500,
