@@ -1,5 +1,16 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.1.2](https://github.com/Phara0h/sky-puppy/compare/v1.1.1...v1.1.2)
+
+> 2 November 2020
+
+- 
+Added `sky-puppy-checker-cloudflare-status` to the list of checkers
+[`6e251c0`](https://github.com/Phara0h/sky-puppy/commit/6e251c0f8d2365add9280d6b847331fdeb2f5cb5)
+- 
+Added sky-puppy-checker-mongodb to list of checkers
+[`d204255`](https://github.com/Phara0h/sky-puppy/commit/d204255d1b1f86183778f872b8e879f746e44f04)
+
 #### [v1.1.1](https://github.com/Phara0h/sky-puppy/compare/v1.1.0...v1.1.1)
 
 > 2 November 2020
