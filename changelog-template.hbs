@@ -22,7 +22,9 @@ All notable changes to this project will be documented in this file. Dates are d
     - {{{commit.subject}}}{{#each fixes}}{{#if href}} [`#{{id}}`]({{href}}){{/if}}{{/each}}
   {{/each}}
   {{#each commits}}
-    - {{#if breaking}}**Breaking change:** {{/if}}{{{subject}}}{{#if href}} [`{{shorthash}}`]({{href}}){{/if}}
+    - {{#if breaking}}**Breaking change:** {{/if}}
+      {{message}}
+  {{#if href}} [`{{shorthash}}`]({{href}}){{/if}}
   {{/each}}
 
 {{/each}}
