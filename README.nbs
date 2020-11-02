@@ -20,6 +20,9 @@ sky-puppy
 ##### Test
 - [sky-puppy-checker-template](https://github.com/Phara0h/sky-puppy-checker-template) : A Sky Puppy template to use to create your own checkers
 
+##### Databases
+- [sky-puppy-checker-mongodb](https://github.com/Phara0h/sky-puppy-checker-mongodb) : A Sky Puppy checker for mongodb
+
 ##### HTTP/HTTPS
 - request (native)
 
