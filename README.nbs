@@ -26,6 +26,9 @@ sky-puppy
 ##### HTTP/HTTPS
 - request (native)
 
+##### Services
+- [sky-puppy-checker-cloudflare-status](https://github.com/Phara0h/sky-puppy-checker-cloudflare-status) : A Sky Puppy checker for checking cloudflarestatus.com api
+
 
 ## Sample Config
 
