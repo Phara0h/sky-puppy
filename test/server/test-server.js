@@ -1,6 +1,6 @@
 'use strict';
-const path = require('path');
-const url = require('url');
+// const path = require('path');
+// const url = require('url');
 const URL = require('url').URL;
 var options = {
   disableRequestLogging: false,
@@ -14,42 +14,42 @@ var options = {
 };
 const app = require('fastify')(options);
 
-function response(req, res) {
-  var urlParsed = new URL(
-    `${options.https ? 'https' : 'http'}://${options.ip}:${options.port}${
-      req.raw.url
-    }`
-  );
-
-  if (options.log) {
-    console.log({
-      body: req.body,
-      query: req.query,
-      params: req.params,
-      url: req.req.url,
-      method: req.raw.method,
-      headers: req.headers,
-      // raw: req.raw,
-      id: req.id,
-      ip: req.ip,
-      ips: req.ips,
-      hostname: req.hostname
-    });
-  }
-  res.code(200).send({
-    body: req.body,
-    query: req.query,
-    params: req.params,
-    url: req.req.url,
-    method: req.raw.method,
-    headers: req.headers,
-    // raw: req.raw,
-    id: req.id,
-    ip: req.ip,
-    ips: req.ips,
-    hostname: req.hostname
-  });
-}
+// function response(req, res) {
+//   var urlParsed = new URL(
+//     `${options.https ? 'https' : 'http'}://${options.ip}:${options.port}${
+//       req.raw.url
+//     }`
+//   );
+//
+//   if (options.log) {
+//     console.log({
+//       body: req.body,
+//       query: req.query,
+//       params: req.params,
+//       url: req.req.url,
+//       method: req.raw.method,
+//       headers: req.headers,
+//       // raw: req.raw,
+//       id: req.id,
+//       ip: req.ip,
+//       ips: req.ips,
+//       hostname: req.hostname
+//     });
+//   }
+//   res.code(200).send({
+//     body: req.body,
+//     query: req.query,
+//     params: req.params,
+//     url: req.req.url,
+//     method: req.raw.method,
+//     headers: req.headers,
+//     // raw: req.raw,
+//     id: req.id,
+//     ip: req.ip,
+//     ips: req.ips,
+//     hostname: req.hostname
+//   });
+// }
 function log(req, res) {
   if (options.log) {
     console.log({
@@ -87,16 +87,16 @@ app.all('/econnreset', (req, res) => {
   req.req.socket.destroy();
 });
 
-var error_flipflop = false;
+var errorFlipflop = false;
 
 app.all('/error/flipflop', (req, res) => {
   log(req, res);
-  if (!error_flipflop) {
+  if (!errorFlipflop) {
     res.status(500);
-    error_flipflop = true;
+    errorFlipflop = true;
     res.send();
   } else {
-    error_flipflop = false;
+    errorFlipflop = false;
     res.status(200);
     res.send();
   }
@@ -121,15 +121,15 @@ app.all('/wait/random/:start/:end', async (req, res) => {
   res.send();
 });
 
-var econnreset_flipflop = false;
+var econnresetFlipflop = false;
 
 app.all('/econnreset/flipflop', (req, res) => {
   log(req, res);
-  if (!econnreset_flipflop) {
+  if (!econnresetFlipflop) {
     req.req.socket.destroy();
-    econnreset_flipflop = true;
+    econnresetFlipflop = true;
   } else {
-    econnreset_flipflop = false;
+    econnresetFlipflop = false;
     res.send();
   }
 });
@@ -147,7 +147,7 @@ function getRandomInt(min, max) {
 // app.all(['/:param1/:param2/:param3'], response);
 // app.all(['/:param1/:param2/:param3/:param4'], response);
 
-app.put('/alert/test', (request, res) => {
+app.all('/alert/test', (request, res) => {
   console.log(
     `${request.body.embeds[0].title} : ${request.body.embeds[0].description}`
   );

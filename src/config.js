@@ -35,6 +35,9 @@ class Config {
     this.settings.skypuppy = this.settings.skypuppy || {
       version: this.version
     };
+
+    this.displayTitle();
+
     this.saveConfig();
   }
 
@@ -107,6 +110,28 @@ class Config {
   saveConfig() {
     console.log('Saving Config');
     fs.writeFileSync(this.path, JSON.stringify(this.settings, null, 4));
+  }
+
+  displayTitle() {
+    var space = ' '.repeat(12 - this.settings.skypuppy.version.length);
+    var title = `
+
+        (_      v${this.settings.skypuppy.version + space}_)
+         /\\                 /\\
+        / \\'._   (\\_/)   _.'/ \\
+       /_.''._'--('.')--'_.''._\\
+       | \\_ / \`;=/ " \\=;\` \\ _/ |
+       \\/  \`\\__|\`\\___/\`|__/\`  \\/
+        \`       \\(/|\\)/       \`
+  ___  _         "___"
+ / __>| |__ _ _  | . \\ _ _  ___  ___  _ _
+ \\__ \\| / /| | | |  _/| | || . \\| . \\| | |
+ <___/|_\\_\\\`_. | |_|  \`___||  _/|  _/\`_. |
+           <___'           |_|  |_|  <___'
+
+    `;
+
+    console.log(title);
   }
 }
 module.exports = Config;

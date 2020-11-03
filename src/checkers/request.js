@@ -36,12 +36,14 @@ class Request {
     this.settings.headers[
       'User-Agent'
     ] = `Sky-Puppy / ${this.config.skypuppy.version} (Health Check Service)`;
+    //console.log(this.settings);
   }
 
   async check() {
     try {
       var res = await fasquest.request(this.settings);
 
+      //console.log(res.statusCode, res.body);
       return {
         code: res.statusCode,
         message: res.body

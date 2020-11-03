@@ -1,4 +1,3 @@
-const fs = require('fs');
 var fasquest = require('fasquest');
 const client = {
   https: require('https'),
@@ -104,11 +103,28 @@ class Alerts {
         return;
       }
       // check if status has changed
+
       if (!this.alerts[alert.type][service.name]) {
         this.alerts[alert.type][service.name] = {
           status: { ...service.status, count: { ...service.status.count } }
         };
+
         this.alerts[alert.type][service.name].status.count[alert.type]--;
+
+        // If sky puppy just started and the first status is healthy then don't alert.
+        var count = this.alerts[alert.type][service.name].status.count;
+        var total =
+          count.healthy +
+          count.down +
+          count.unhealthy +
+          count.unhealthy_response_time +
+          count.unhealthy_status;
+
+        if (service.status.up === 1 && total === 0) {
+          this.alerts[alert.type][service.name].alerted = true;
+          console.log(service.name, 'is healthy!');
+          return;
+        }
       }
 
       if (
@@ -118,7 +134,7 @@ class Alerts {
         !this.alerts[alert.type][service.name].alerted
       ) {
         this.alerts[alert.type][service.name].alerted = true;
-        await this._send_alert(alert, service);
+        await this._sendAlert(alert, service);
         return;
       }
     } else {
@@ -146,39 +162,40 @@ class Alerts {
     }
   }
 
-  async _send_alert(alert, service) {
+  async _sendAlert(alert, service) {
     if (this.alerters[alert.alerter]) {
-      var overrides = alert.overrides || {};
-      var request = { ...this.alerters[alert.alerter].request, ...overrides };
-
-      if (request.body) {
-        request.body = this.nbars.transform(
-          request.json ? JSON.stringify(request.body) : request.body,
-          {
-            alert_type: alert.type,
-            service_name: service.name,
-            message: service.status.message,
-            timestamp: new Date().toISOString(),
-            last_unhealthy_total_duration:
-              service.status.last_unhealthy_total_duration || 'Unknown',
-            last_healthy_total_duration: service.status.last_healthy ?
-              (
-                Number(
-                  process.hrtime.bigint() - service.status.last_healthy
-                ) / 1000000000
-              ).toFixed(2) :
-              'Unknown'
-          }
-        );
-
-        if (request.json) {
-          request.body = JSON.parse(request.body);
-        }
-      }
-      //console.log(request.body)
-      this.alerts_status[service.name] = service.status.up;
-
       try {
+        var overrides = alert.overrides || {};
+        var request = { ...this.alerters[alert.alerter].request, ...overrides };
+
+        if (request.body) {
+          request.body = this.nbars.transform(
+            request.json ? JSON.stringify(request.body) : request.body,
+            {
+              alert_type: alert.type,
+              service_name: service.name,
+              message: service.status.message || '',
+              timestamp: new Date().toISOString(),
+              last_unhealthy_total_duration:
+                service.status.last_unhealthy_total_duration || 'Unknown',
+              last_healthy_total_duration: service.status.last_healthy ?
+                (
+                  Number(
+                    process.hrtime.bigint() - service.status.last_healthy
+                  ) / 1000000000
+                ).toFixed(2) :
+                'Unknown'
+            }
+          );
+
+          if (request.json) {
+            //console.log(request.body);
+            request.body = JSON.parse(request.body);
+          }
+        }
+        //console.log(request.body)
+        this.alerts_status[service.name] = service.status.up;
+
         await fasquest.request(JSON.parse(JSON.stringify(request)));
       } catch (e) {
         console.log(e);

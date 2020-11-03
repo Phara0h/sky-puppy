@@ -1,5 +1,3 @@
-const fs = require('fs');
-
 const Config = require('./config.js');
 var config = new Config();
 const Alerts = require('./alerts.js');
@@ -33,7 +31,7 @@ class HealthCheck {
             name: checkersKeys[i]
           };
         } catch (e) {
-          console.error(`Failed to load ${checkersKeys[i]}!`);
+          console.error(`Failed to load ${checkersKeys[i]}!`, e);
           process.exit();
         }
       }
@@ -88,7 +86,7 @@ class HealthCheck {
     } catch (e) {
       throw new Error('No service with that name.');
     }
-    return null;
+    //return null;
   }
 
   editService(name, service) {
@@ -161,8 +159,13 @@ class HealthCheck {
         checkerCodeMessages = {
           ...nService.config.checker.code_messages
         };
+      } else if (checker.settings && checker.settings.code_messages) {
+        checkerCodeMessages = {
+          ...checker.settings.code_messages
+        };
       }
       nService.code_messages = checkerCodeMessages;
+      //console.log(nService.code_messages);
       nService.checker = await checker.mod(config, nService, checkerSettings);
       await nService.checker.init();
 

@@ -1,5 +1,5 @@
-module.exports = function (fastify, opts) {
-  const stats = opts.stats;
+module.exports = function(fastify, opts) {
+  //const stats = opts.stats;
   const healthCheck = opts.healthCheck;
 
   fastify.put('/alerter/:name', async (req, res) => {

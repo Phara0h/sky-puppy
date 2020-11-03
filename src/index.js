@@ -42,7 +42,7 @@ async function start() {
   });
 
   app.ready(() => {
-    console.log(app.printRoutes());
+    //console.log(app.printRoutes());
   });
 
   app.listen(
