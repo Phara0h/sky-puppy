@@ -236,11 +236,17 @@ class HealthCheck {
           service.status.count.unhealthy++;
         }
       } catch (e) {
-        service.status.time =
-          Number(process.hrtime.bigint() - startTime) / 1000000;
-        service.status.count.down++;
-        service.status.up = -1;
-        service.status.code = 0;
+        if (e.message.indexOf('ETIMEDOUT') > -1) {
+          service.status.up = 0;
+          service.status.count.unhealthy++;
+          log.info(service.name, ' Unhealthy ETIMEDOUT!');
+        } else {
+          service.status.time =
+            Number(process.hrtime.bigint() - startTime) / 1000000;
+          service.status.count.down++;
+          service.status.up = -1;
+          service.status.code = 0;
+        }
 
         log.debug(service.name, e.message);
       }
