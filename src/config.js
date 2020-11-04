@@ -4,7 +4,8 @@ var log;
 
 class Config {
   constructor() {
-    this.version = require(process.cwd() + '/package.json').version;
+    this.version = require(path.dirname(require.main.filename) +
+      '/../package.json').version;
     process.title = 'Sky Puppy v' + this.version;
     try {
       this.path =
