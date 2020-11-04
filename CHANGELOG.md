@@ -1,5 +1,19 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.3.0](https://github.com/Phara0h/sky-puppy/compare/v1.2.0...v1.3.0)
+
+> 4 November 2020
+
+- 
+Fixed bugs and added pretty console logs
+
+- Fixed `last_unhealthy_total_duration` and `last_healthy_total_duration` bug reporting the wrong elapsed time.
+- Fixed `healthy` status getting reported even when unhealthy/down has not yet been reported.
+- Fixed bug relating to console title displaying config version instead of application version.
+- Added new console logs (see sample config for details)
+- Added 2 new test-server routes
+[`bd98346`](https://github.com/Phara0h/sky-puppy/commit/bd9834615c809569f714ac4dcc01ab00838f73cf)
+
 #### [v1.2.0](https://github.com/Phara0h/sky-puppy/compare/v1.1.2...v1.2.0)
 
 > 3 November 2020
