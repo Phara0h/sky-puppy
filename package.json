@@ -14,7 +14,7 @@
     "url": "git+https://github.com/Phara0h/sky-puppy.git"
   },
   "bin": {
-    "sky-puppy": "NODE_ENV=production ./src/index.js"
+    "sky-puppy": "./src/index.js"
   },
   "keywords": [
     "prometheus",
