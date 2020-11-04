@@ -146,6 +146,12 @@ Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ra
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.3.4](https://github.com/Phara0h/sky-puppy/compare/v1.3.3...v1.3.4)
+
+> 4 November 2020
+
+#####   [`e196e2b`](https://github.com/Phara0h/sky-puppy/commit/e196e2bf498bc3491f6feac0ac53b692bdd6e502)Fixed bug `Cannot find module` package.json
+
 #### [v1.3.3](https://github.com/Phara0h/sky-puppy/compare/v1.3.2...v1.3.3)
 
 > 4 November 2020
