@@ -1,10 +1,10 @@
 const fs = require('fs');
 var path = require('path');
+var log;
 
 class Config {
   constructor() {
-    this.version = require(path.dirname(require.main.filename) +
-      '/../package.json').version;
+    this.version = require(process.cwd() + '/package.json').version;
     process.title = 'Sky Puppy v' + this.version;
     try {
       this.path =
@@ -36,8 +36,17 @@ class Config {
       version: this.version
     };
 
-    this.displayTitle();
+    if (!this.settings.skypuppy.log) {
+      this.settings.skypuppy.log = {
+        enable: true,
+        colors: true,
+        level: 'error'
+      };
+    }
 
+    log = require('./misc/logger')(this.settings.skypuppy);
+
+    this.displayTitle();
     this.saveConfig();
   }
 
@@ -108,15 +117,15 @@ class Config {
   }
 
   saveConfig() {
-    console.log('Saving Config');
+    log.debug('Saving Config...');
     fs.writeFileSync(this.path, JSON.stringify(this.settings, null, 4));
   }
 
   displayTitle() {
-    var space = ' '.repeat(12 - this.settings.skypuppy.version.length);
+    var space = ' '.repeat(12 - this.version.length);
     var title = `
 
-        (_      v${this.settings.skypuppy.version + space}_)
+        (_      v${this.version + space}_)
          /\\                 /\\
         / \\'._   (\\_/)   _.'/ \\
        /_.''._'--('.')--'_.''._\\

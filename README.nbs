@@ -131,7 +131,12 @@ Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ra
     }
   },
   "skypuppy": {
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "log": {
+        "enable": true,
+        "colors": true,
+        "level": "info"
+    }
   }
 }
 

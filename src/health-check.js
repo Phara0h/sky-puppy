@@ -1,5 +1,6 @@
 const Config = require('./config.js');
 var config = new Config();
+const log = require('./misc/logger')();
 const Alerts = require('./alerts.js');
 
 class HealthCheck {
@@ -31,7 +32,7 @@ class HealthCheck {
             name: checkersKeys[i]
           };
         } catch (e) {
-          console.error(`Failed to load ${checkersKeys[i]}!`, e);
+          log.error(`Failed to load ${checkersKeys[i]}!`, e);
           process.exit();
         }
       }
@@ -50,7 +51,7 @@ class HealthCheck {
     if (this.services[name]) {
       this.editService(name, service);
     } else {
-      console.log(`Adding service ${name} ...`);
+      log.info(`Adding service ${name} ...`);
       config.addService(name, service);
       this.startService(name, service);
     }
@@ -90,14 +91,14 @@ class HealthCheck {
   }
 
   editService(name, service) {
-    console.log(`Updating service ${name} ...`);
+    log.info(`Updating service ${name} ...`);
     this.deleteService(name);
     this.addService(name, service);
   }
 
   deleteService(name) {
     if (this.services[name]) {
-      console.log(`Deleting service ${name} ...`);
+      log.info(`Deleting service ${name} ...`);
       clearTimeout(this.services[name]._sTimeoutHandler);
       delete this.services[name];
       config.deleteService(name);
@@ -108,7 +109,7 @@ class HealthCheck {
 
   async startService(name, service) {
     if (!this.services[name]) {
-      console.log(`Starting service ${name} ...`);
+      log.info(`Starting service ${name} ...`);
       var nService = {
         name,
         enabled: true,
@@ -165,7 +166,7 @@ class HealthCheck {
         };
       }
       nService.code_messages = checkerCodeMessages;
-      //console.log(nService.code_messages);
+      //log.debug(nService.code_messages);
       nService.checker = await checker.mod(config, nService, checkerSettings);
       await nService.checker.init();
 
@@ -217,16 +218,13 @@ class HealthCheck {
         if (service.config.expected_status != service.status.code) {
           service.status.up = 0;
           service.status.count.unhealthy_status++;
-          console.log(
-            service.name,
-            ' Unhealthy status: ' + service.status.code
-          );
+          log.info(service.name, ' Unhealthy status: ' + service.status.code);
         }
 
         if (service.status.time > service.config.expected_response_time) {
           service.status.up = 0;
           service.status.count.unhealthy_response_time++;
-          console.log(
+          log.info(
             service.name,
             ' Unhealthy response time: ' + service.status.time.toFixed(2) + 'ms'
           );
@@ -244,23 +242,34 @@ class HealthCheck {
         service.status.up = -1;
         service.status.code = 0;
 
-        console.log(service.name, e.message);
+        log.debug(service.name, e.message);
       }
 
       if (service.status.last_status == null) {
         service.status.last_status = service.status.up;
       }
+
       if (service.status.up > 0) {
         if (!service.status.last_healthy) {
           service.status.last_healthy = process.hrtime.bigint();
         }
         if (service.status.last_status < 1 && service.status.last_healthy) {
-          console.log(service.name, ' healthy again!');
           service.status.last_unhealthy_total_duration = (
-            Number(process.hrtime.bigint() - service.status.last_healthy) /
+            Number(process.hrtime.bigint() - service.status.last_unhealthy) /
             1000000000
-          ).toFixed(2);
+          ).toFixed(3);
+          log.info(
+            service.name,
+            `healthy again after ${service.status.last_unhealthy_total_duration} second of down time!`
+          );
           service.status.last_healthy = process.hrtime.bigint();
+        }
+      } else {
+        if (!service.status.last_unhealthy) {
+          service.status.last_unhealthy = process.hrtime.bigint();
+        }
+        if (service.status.last_status > 0 && service.status.last_unhealthy) {
+          service.status.last_unhealthy = process.hrtime.bigint();
         }
       }
       this.stats.updateService(service.name, service.status);

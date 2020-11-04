@@ -12,6 +12,8 @@ fasquest.agent = {
     keepAlive: false
   })
 };
+const log = require('./misc/logger')();
+
 class Alerts {
   constructor(stats, config, nbars) {
     this.nbars = nbars;
@@ -40,7 +42,7 @@ class Alerts {
     if (this.alerters[name]) {
       this.editAlerter(name, alerter);
     } else {
-      console.log(`Adding alerter ${name} ...`);
+      log.info(`Adding alerter ${name} ...`);
       this.config.addAlerter(name, alerter);
       this.startAlerter(name, alerter);
     }
@@ -52,7 +54,7 @@ class Alerts {
 
   deleteAlerter(name) {
     if (this.alerters[name]) {
-      console.log(`Deleting alerter ${name} ...`);
+      log.info(`Deleting alerter ${name} ...`);
 
       delete this.alerters[name];
       this.config.deleteAlerter(name);
@@ -62,7 +64,7 @@ class Alerts {
   }
 
   editAlerter(name, alerter) {
-    console.log(`Updating alerter ${name} ...`);
+    log.info(`Updating alerter ${name} ...`);
     this.deleteAlerter(name);
     this.addAlerter(name, alerter);
   }
@@ -122,7 +124,7 @@ class Alerts {
 
         if (service.status.up === 1 && total === 0) {
           this.alerts[alert.type][service.name].alerted = true;
-          console.log(service.name, 'is healthy!');
+          log.info(service.name, 'is healthy!');
           return;
         }
       }
@@ -133,6 +135,14 @@ class Alerts {
           (alert.for || 1) &&
         !this.alerts[alert.type][service.name].alerted
       ) {
+        // Don't alert if skypuppy never alterted about the bad down/unhealthy state.
+        if (
+          alert.type == 'healthy' &&
+          (this.alerts_status[service.name] === 1 ||
+            this.alerts_status[service.name] === undefined)
+        ) {
+          return;
+        }
         this.alerts[alert.type][service.name].alerted = true;
         await this._sendAlert(alert, service);
         return;
@@ -189,19 +199,21 @@ class Alerts {
           );
 
           if (request.json) {
-            //console.log(request.body);
+            //log.debug(request.body);
             request.body = JSON.parse(request.body);
           }
         }
-        //console.log(request.body)
+        //log.log(request.body)
         this.alerts_status[service.name] = service.status.up;
 
         await fasquest.request(JSON.parse(JSON.stringify(request)));
       } catch (e) {
-        console.log(e);
+        log.error(
+          `ERROR: Alerter [${alert.alerter}] of type [${alert.type}] could not be reached. Errored with message ${e.err.message}`
+        );
       }
     } else {
-      console.warn(
+      log.warn(
         `WARNING: Alerter [${alert.alerter}] of type [${alert.type}] does not exist, but service [${service.name}] is trying to use it!`
       );
     }

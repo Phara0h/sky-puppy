@@ -4,7 +4,7 @@
   "description": "A easy to use reliable health checking service with Prometheus export",
   "main": "./src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "NODE_ENV=production node src/index.js ",
     "test": "SKY_PUPPY_CONFIG_PATH=./test node src/index.js",
     "version": "auto-changelog -l false --sort-commits date-desc --package --hide-credit --template changelog-template.hbs -p && mdsquash -i  CHANGELOG.md && git add -A CHANGELOG.md && git add -A README.md",
     "postversion": "git push &&  git push --tags && npm publish"
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/Phara0h/sky-puppy.git"
   },
   "bin": {
-    "sky-puppy": "./src/index.js"
+    "sky-puppy": "NODE_ENV=production ./src/index.js"
   },
   "keywords": [
     "prometheus",
@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/Phara0h/sky-puppy#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "fasquest": "^3.0.1",
     "fastify": "^3.7.0",
     "nbars": "^1.0.1",

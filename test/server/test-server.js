@@ -102,6 +102,32 @@ app.all('/error/flipflop', (req, res) => {
   }
 });
 
+var errorInCount = 0;
+
+app.all('/error/in/:num', (req, res) => {
+  log(req, res);
+  if (++errorInCount >= req.params.num) {
+    res.status(500).send();
+    errorInCount = 0;
+    return;
+  }
+
+  res.status(200).send();
+});
+
+var successInCount = 0;
+
+app.all('/success/in/:num', (req, res) => {
+  log(req, res);
+  if (++successInCount >= req.params.num) {
+    res.status(200).send();
+    successInCount = 0;
+    return;
+  }
+
+  res.status(500).send();
+});
+
 app.all('/error/random', (req, res) => {
   log(req, res);
   res.status(Math.round(Math.random()) > 0 ? 200 : 500);
