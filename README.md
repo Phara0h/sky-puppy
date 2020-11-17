@@ -146,6 +146,12 @@ Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ra
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.3.6](https://github.com/Phara0h/sky-puppy/compare/v1.3.5...v1.3.6)
+
+> 17 November 2020
+
+#####   [`61b2674`](https://github.com/Phara0h/sky-puppy/commit/61b267410b7dfcff222ff841b594a659f05ddf5e)Minor debug fix
+
 #### [v1.3.5](https://github.com/Phara0h/sky-puppy/compare/v1.3.4...v1.3.5)
 
 > 17 November 2020
