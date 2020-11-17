@@ -1,5 +1,15 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.3.5](https://github.com/Phara0h/sky-puppy/compare/v1.3.4...v1.3.5)
+
+> 17 November 2020
+
+#####   [`ec30c55`](https://github.com/Phara0h/sky-puppy/commit/ec30c55cdaed1a4e7eee81dccef1ae388b92ee8a)Few fixes
+
+- Added date to each prom stats only when it was updated
+- Fixed bug with version not showing in prom stats
+- Fixed possible bug around alerts
+
 #### [v1.3.4](https://github.com/Phara0h/sky-puppy/compare/v1.3.3...v1.3.4)
 
 > 4 November 2020
