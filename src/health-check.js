@@ -278,14 +278,15 @@ class HealthCheck {
           service.status.last_unhealthy = process.hrtime.bigint();
         }
       }
-      this.stats.updateService(service.name, service.status);
+      await this.stats.updateService(service.name, service.status);
 
-      this.alerts.alert(service);
+      await this.alerts.alert(service);
       service.status.last_status = service.status.up;
       const tout =
         service.config.interval -
         Number(process.hrtime.bigint() - startTime) / 1000000;
 
+      log.debug('tout: ' + (tout > 0 ? tout : 0));
       this.services[service.name]._sTimeoutHandler = setTimeout(
         async () => {
           this._runCheck(service);

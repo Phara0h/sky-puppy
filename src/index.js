@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-const nstats = require('nstats')();
 const Stats = require('./misc/stats.js');
 const stats = new Stats();
 
@@ -8,7 +7,7 @@ async function start() {
   const { NBars } = await import('nbars');
   const HealthCheck = require('./health-check.js');
   const healthCheck = new HealthCheck(stats, NBars);
-
+  const nstats = require('nstats')();
   const app = require('fastify')({
     logger: false
   });

@@ -6,6 +6,8 @@ class Config {
   constructor() {
     this.version = require(path.dirname(require.main.filename) +
       '/../package.json').version;
+    require('nstats')(null, null, this.version);
+
     process.title = 'Sky Puppy v' + this.version;
     try {
       this.path =
