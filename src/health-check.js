@@ -286,7 +286,10 @@ class HealthCheck {
         service.config.interval -
         Number(process.hrtime.bigint() - startTime) / 1000000;
 
-      log.debug('tout: ' + (tout > 0 ? tout : 0));
+      if (tout <= 0) {
+        log.debug(service.name + ' tout: ' + (tout > 0 ? tout : 0));
+      }
+
       this.services[service.name]._sTimeoutHandler = setTimeout(
         async () => {
           this._runCheck(service);
