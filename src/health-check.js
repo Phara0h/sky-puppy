@@ -278,7 +278,8 @@ class HealthCheck {
           service.status.last_unhealthy = process.hrtime.bigint();
         }
       }
-      await this.stats.updateService(service.name, service.status);
+
+      this.stats.updateService(service.name, service.status);
 
       await this.alerts.alert(service);
       service.status.last_status = service.status.up;

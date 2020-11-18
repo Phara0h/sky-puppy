@@ -7,7 +7,7 @@ class Stats {
     for (var i = 0; i < this.services.length; i++) {
       if (this.services[i].name == name) {
         this.services[i].status = status;
-        this.services.date = Date.now();
+        this.services[i].date = Date.now();
         return;
       }
     }
