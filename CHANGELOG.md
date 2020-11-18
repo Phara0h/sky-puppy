@@ -1,5 +1,11 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.3.7](https://github.com/Phara0h/sky-puppy/compare/v1.3.6...v1.3.7)
+
+> 18 November 2020
+
+#####   [`0cc7817`](https://github.com/Phara0h/sky-puppy/commit/0cc78172c6f40edb0e50ff3efd33a6becd3b6ec9)Fixed a minor bug, dates should now work in prom.
+
 #### [v1.3.6](https://github.com/Phara0h/sky-puppy/compare/v1.3.5...v1.3.6)
 
 > 17 November 2020
