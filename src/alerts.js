@@ -209,7 +209,7 @@ class Alerts {
         await fasquest.request(JSON.parse(JSON.stringify(request)));
       } catch (e) {
         log.error(
-          `ERROR: Alerter [${alert.alerter}] of type [${alert.type}] could not be reached. Errored with message ${e.err.message}`
+          `ERROR: Alerter [${alert.alerter}] of type [${alert.type}] could not be reached. Errored with message ${e.err ? e.err.message : e.message}`
         );
       }
     } else {

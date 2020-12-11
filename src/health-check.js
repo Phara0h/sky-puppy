@@ -173,7 +173,7 @@ class HealthCheck {
       this.services[name] = nService;
 
       this.services[name]._sTimeoutHandler = setTimeout(() => {
-        this._runCheck(this.services[name]);
+        this._run(this.services[name]);
       }, (nService.config.start_delay || 0) * 1000);
     }
   }
@@ -197,106 +197,127 @@ class HealthCheck {
     return message || '';
   }
 
-  async _runCheck(service) {
-    if (service && service.enabled) {
-      const startTime = process.hrtime.bigint();
-      // const oldStatus = service.status.up;
+  async _runChecker(service, startTime) {
+    try {
+      var res = await service.checker.check();
 
-      try {
-        var res = await service.checker.check();
+      service.status.time =
+        Number(process.hrtime.bigint() - startTime) / 1000000;
+      service.status.code = res.code;
+      service.status.message = this._mapMessages(
+        res.code,
+        res.message,
+        service
+      );
+      service.status.up = 1;
 
-        service.status.time =
-          Number(process.hrtime.bigint() - startTime) / 1000000;
-        service.status.code = res.code;
-        service.status.message = this._mapMessages(
-          res.code,
-          res.message,
-          service
-        );
-        service.status.up = 1;
-
-        if (service.config.expected_status != service.status.code) {
-          service.status.up = 0;
-          service.status.count.unhealthy_status++;
-          log.info(service.name, ' Unhealthy status: ' + service.status.code);
-        }
-
-        if (service.status.time > service.config.expected_response_time) {
-          service.status.up = 0;
-          service.status.count.unhealthy_response_time++;
-          log.info(
-            service.name,
-            ' Unhealthy response time: ' + service.status.time.toFixed(2) + 'ms'
-          );
-        }
-
-        if (service.status.up > 0) {
-          service.status.count.healthy++;
-        } else {
-          service.status.count.unhealthy++;
-        }
-      } catch (e) {
-        if (e.message.indexOf('ETIMEDOUT') > -1) {
-          service.status.up = 0;
-          service.status.count.unhealthy++;
-          log.info(service.name, ' Unhealthy ETIMEDOUT!');
-        } else {
-          service.status.time =
-            Number(process.hrtime.bigint() - startTime) / 1000000;
-          service.status.count.down++;
-          service.status.up = -1;
-          service.status.code = 0;
-        }
-
-        log.debug(service.name, e.message);
+      if (service.config.expected_status != service.status.code) {
+        service.status.up = 0;
+        service.status.count.unhealthy_status++;
+        log.info(service.name, ' Unhealthy status: ' + service.status.code);
       }
 
-      if (service.status.last_status == null) {
-        service.status.last_status = service.status.up;
+      if (service.status.time > service.config.expected_response_time) {
+        service.status.up = 0;
+        service.status.count.unhealthy_response_time++;
+        log.info(
+          service.name,
+          ' Unhealthy response time: ' + service.status.time.toFixed(2) + 'ms'
+        );
       }
 
       if (service.status.up > 0) {
-        if (!service.status.last_healthy) {
-          service.status.last_healthy = process.hrtime.bigint();
-        }
-        if (service.status.last_status < 1 && service.status.last_healthy) {
-          service.status.last_unhealthy_total_duration = (
-            Number(process.hrtime.bigint() - service.status.last_unhealthy) /
-            1000000000
-          ).toFixed(3);
-          log.info(
-            service.name,
-            `healthy again after ${service.status.last_unhealthy_total_duration} second of down time!`
-          );
-          service.status.last_healthy = process.hrtime.bigint();
-        }
+        service.status.count.healthy++;
       } else {
-        if (!service.status.last_unhealthy) {
-          service.status.last_unhealthy = process.hrtime.bigint();
-        }
-        if (service.status.last_status > 0 && service.status.last_unhealthy) {
-          service.status.last_unhealthy = process.hrtime.bigint();
-        }
+        service.status.count.unhealthy++;
+      }
+    } catch (e) {
+      if (e.message.indexOf('ETIMEDOUT') > -1) {
+        service.status.time =
+          Number(process.hrtime.bigint() - startTime) / 1000000;
+
+        service.status.count.unhealthy++;
+        service.status.up = 0;
+        service.status.code = 0;
+
+        service.status.message = this._mapMessages(
+          service.status.code,
+          'Timedout',
+          service
+        );
+
+        log.info(service.name, ' Unhealthy ETIMEDOUT!');
+      } else {
+        service.status.time =
+          Number(process.hrtime.bigint() - startTime) / 1000000;
+        service.status.count.down++;
+        service.status.up = -1;
+        service.status.code = -1;
+        service.status.message = this._mapMessages(
+          service.status.code,
+          e.message,
+          service
+        );
+        log.info(service.name, ' Down! ', e.message);
       }
 
-      this.stats.updateService(service.name, service.status);
+      log.debug(service.name, e.message);
+    }
 
-      await this.alerts.alert(service);
+    if (service.status.last_status == null) {
       service.status.last_status = service.status.up;
-      const tout =
-        service.config.interval -
-        Number(process.hrtime.bigint() - startTime) / 1000000;
+    }
 
-      if (tout <= 0) {
-        log.debug(service.name + ' tout: ' + (tout > 0 ? tout : 0));
+    if (service.status.up > 0) {
+      if (!service.status.last_healthy) {
+        service.status.last_healthy = process.hrtime.bigint();
+      }
+      if (service.status.last_status < 1 && service.status.last_healthy) {
+        service.status.last_unhealthy_total_duration = (
+          Number(process.hrtime.bigint() - service.status.last_unhealthy) /
+          1000000000
+        ).toFixed(3);
+        log.info(
+          service.name,
+          `healthy again after ${service.status.last_unhealthy_total_duration} second of down time!`
+        );
+        service.status.last_healthy = process.hrtime.bigint();
+      }
+    } else if (!service.status.last_unhealthy || (service.status.last_status > 0 && service.status.last_unhealthy)) {
+      service.status.last_unhealthy = process.hrtime.bigint();
+    }
+  }
+  async _run(service) {
+    if (service && service.enabled) {
+      const startTime = process.hrtime.bigint();
+
+      try {
+        await this._runChecker(service, startTime);
+        this.stats.updateService(service.name, service.status);
+        await this.alerts.alert(service);
+      } catch (e) {
+        log.error(e.message);
       }
 
-      this.services[service.name]._sTimeoutHandler = setTimeout(
-        async () => {
-          this._runCheck(service);
-        },
-        tout > 0 ? tout : 0
-      );
+      try {
+        service.status.last_status = service.status.up;
+        const tout =
+          service.config.interval -
+          Number(process.hrtime.bigint() - startTime) / 1000000;
+
+        if (tout <= 0) {
+          log.debug(service.name + ' tout: ' + (tout > 0 ? tout : 0));
+        }
+
+        this.services[service.name]._sTimeoutHandler = setTimeout(
+          async () => {
+            this._run(service);
+          },
+          tout > 0 ? tout : 0
+        );
+      } catch (e) {
+        log.fatal('Could not run service: ' + (service ? service.name : 'Unknown' + ' e:' + e.message));
+      }
     }
   }
 }
