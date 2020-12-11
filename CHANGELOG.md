@@ -1,5 +1,11 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.3.8](https://github.com/Phara0h/sky-puppy/compare/v1.3.7...v1.3.8)
+
+> 11 December 2020
+
+#####   [`628dc13`](https://github.com/Phara0h/sky-puppy/commit/628dc135553f811d6ccf565249ce690cb025eb8e)FIxed some bugs, made sky puppy more crash safe and better logging
+
 #### [v1.3.7](https://github.com/Phara0h/sky-puppy/compare/v1.3.6...v1.3.7)
 
 > 18 November 2020
