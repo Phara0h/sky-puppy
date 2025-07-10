@@ -1,5 +1,9 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.4.0](https://github.com/Phara0h/sky-puppy/compare/v1.3.8...v1.4.0)
+
+#####   [`596e16d`](https://github.com/Phara0h/sky-puppy/commit/596e16d919295b0321c8460a436ba3ad47764949)Tons of documentation, new website and cleanup
+
 #### [v1.3.8](https://github.com/Phara0h/sky-puppy/compare/v1.3.7...v1.3.8)
 
 > 11 December 2020
