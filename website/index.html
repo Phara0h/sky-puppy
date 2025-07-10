@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Puppy - Lightning-fast Health Monitoring Service</title>
+    <meta name="description" content="Sky Puppy is a powerful, lightweight health monitoring service that keeps your applications running smoothly with Prometheus metrics and smart alerting.">
+    <meta name="keywords" content="health monitoring, prometheus, alerting, discord, slack, webhooks, node.js, fastify">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sky-puppy.com/">
+    <meta property="og:title" content="Sky Puppy - Lightning-fast Health Monitoring Service">
+    <meta property="og:description" content="Monitor HTTP endpoints, databases, and custom services with real-time alerts and Prometheus metrics export.">
+    <meta property="og:image" content="https://sky-puppy.com/images/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sky-puppy.com/">
+    <meta property="twitter:title" content="Sky Puppy - Lightning-fast Health Monitoring Service">
+    <meta property="twitter:description" content="Monitor HTTP endpoints, databases, and custom services with real-time alerts and Prometheus metrics export.">
+    <meta property="twitter:image" content="https://sky-puppy.com/images/logo.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
+                <span>Sky Puppy</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#features" class="nav-link">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#getting-started" class="nav-link">Get Started</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#documentation" class="nav-link">Docs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#examples" class="nav-link">Examples</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://github.com/Phara0h/sky-puppy" class="nav-link" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Sky Puppy</h1>
+                <p class="hero-subtitle">
+                    Lightning-fast, reliable health monitoring for your services with Prometheus metrics and smart alerting
+                </p>
+                <div class="hero-buttons">
+                    <a href="#getting-started" class="btn btn-primary">
+                        <i class="fas fa-rocket"></i>
+                        Get Started
+                    </a>
+                    <a href="https://github.com/Phara0h/sky-puppy" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">1.3.8</span>
+                        <span class="stat-label">Latest Version</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">Active Users</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Monitoring</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-window">
+                    <div class="code-header">
+                        <div class="code-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <span class="code-title">sky-puppy-config.json</span>
+                    </div>
+                    <div class="code-content">
+                        <pre><code>{
+  "alerters": {
+    "somewebhook_alert": {
+       ...
+    }
+  },
+  "services": {
+    "my-website": {
+      "interval": 30,
+      "checker": {
+        "name": "request",
+        "settings": {
+          "uri": "https://myapp.com/health",
+          "timeout": 5
+        }
+      },
+      "alerts": [
+        {
+          "type": "down",
+          "alerter": "somewebhook_alert"
+        }
+      ]
+    }
+  }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose Sky Puppy?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Lightning Fast</h3>
+                    <p>Built with Fastify for exceptional performance. Monitor hundreds of services with minimal resource usage.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Reliable</h3>
+                    <p>Robust error handling and automatic recovery. Your monitoring never stops, even when services fail.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Prometheus Ready</h3>
+                    <p>Built-in Prometheus metrics export. Integrate seamlessly with your existing monitoring stack.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Smart Alerting</h3>
+                    <p>Discord, Slack, Teams, and custom webhook integrations. Get notified exactly when you need to be.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Extensible</h3>
+                    <p>Create custom checkers for any service. Modular architecture makes it easy to add new monitoring types.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Easy Configuration</h3>
+                    <p>Simple JSON configuration. Get up and running in minutes, not hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting Started Section -->
+    <section id="getting-started" class="getting-started">
+        <div class="container">
+            <h2 class="section-title">Get Started in 5 Minutes</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Install Sky Puppy</h3>
+                        <div class="code-block">
+                            <pre><code>npm install -g sky-puppy</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard(this)">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Create Configuration</h3>
+                        <p>Create <code>sky-puppy-config.json</code>:</p>
+                        <div class="code-block">
+                            <pre><code>{
+  "alerters": {
+    "your_alert": {
+      "uri": "https://httpbin.org/put",
+      "json": true,
+      "method": "PUT",
+      "body": {
+        "test": "{{service_name}} is {{alert_type}}!"
+      }
+    }
+  },
+  "services": {
+    "your_service": {
+      "interval": 3,
+      "start_delay": 2,
+      "checker": {
+          "name": "request",
+          "settings": {
+            "uri": "https://httpbin.org/get",
+            "timeout": 2
+          }
+      },
+      "alerts": [
+        {
+          "type": "down",
+          "alerter": "your_alert"
+        },
+        {
+          "type": "unhealthy",
+          "alerter": "your_alert"
+        },
+        {
+          "type": "healthy",
+          "alerter": "your_alert"
+        }
+      ]
+    }
+  },
+  "skypuppy": {
+    "version": "1.0.0",
+    "log": {
+        "enable": true,
+        "colors": true,
+        "level": "info"
+    }
+  }
+}</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard(this)">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Start Monitoring</h3>
+                        <div class="code-block">
+                            <pre><code>sky-puppy</code></pre>
+                            <button class="copy-btn" onclick="copyToClipboard(this)">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                        <p>That's it! Your service is now being monitored.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="examples">
+        <div class="container">
+            <h2 class="section-title">Real-World Examples</h2>
+            <div class="examples-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="web-app">Web Application</button>
+                    <button class="tab-btn" data-tab="api">API Service</button>
+                    <button class="tab-btn" data-tab="database">Database</button>
+                    <button class="tab-btn" data-tab="discord">Discord Alerts</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="web-app">
+                        <h3>Web Application Monitoring</h3>
+                        <p>Monitor your web application with health checks and performance metrics.</p>
+                        <div class="code-block">
+                            <pre><code>{
+  "services": {
+    "web-frontend": {
+      "interval": 30,
+      "checker": {
+        "name": "request",
+        "settings": {
+          "uri": "https://myapp.com/health",
+          "timeout": 10,
+          "method": "GET"
+        }
+      }
+    }
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="api">
+                        <h3>API Service Monitoring</h3>
+                        <p>Monitor API endpoints with authentication and custom health checks.</p>
+                        <div class="code-block">
+                            <pre><code>{
+  "services": {
+    "api-backend": {
+      "interval": 15,
+      "checker": {
+        "name": "request",
+        "settings": {
+          "uri": "https://api.myapp.com/health",
+          "timeout": 5,
+          "method": "POST",
+          "headers": {
+            "Authorization": "Bearer your-token"
+          },
+          "body": {
+            "check": "database"
+          }
+        }
+      }
+    }
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="database">
+                        <h3>Database Health Monitoring</h3>
+                        <p>Monitor database connections and performance using custom checkers.</p>
+                        <div class="code-block">
+                            <pre><code>{
+  "services": {
+    "mongodb": {
+      "interval": 60,
+      "checker": {
+        "name": "sky-puppy-checker-mongodb",
+        "settings": {
+          "uri": "mongodb://localhost:27017",
+          "database": "myapp"
+        }
+      }
+    }
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="discord">
+                        <h3>Discord Alerting</h3>
+                        <p>Get notified in Discord when services go down or recover.</p>
+                        <div class="code-block">
+                            <pre><code>{
+  "alerters": {
+    "discord_alert": {
+      "uri": "https://discord.com/api/webhooks/YOUR_WEBHOOK",
+      "json": true,
+      "method": "POST",
+      "body": {
+        "embeds": [{
+          "title": "🚨 {{service_name}} is {{alert_type}}!",
+          "description": "Service was healthy for {{last_healthy_total_duration}} seconds",
+          "color": 14828098,
+          "timestamp": "{{timestamp}}"
+        }],
+        "username": "Sky Puppy"
+      }
+    }
+  }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="documentation" class="documentation">
+        <div class="container">
+            <h2 class="section-title">Documentation</h2>
+            <div class="docs-grid">
+                <a href="docs/getting-started.html" class="doc-card">
+                    <div class="doc-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Getting Started</h3>
+                    <p>Quick setup guide to get Sky Puppy running in minutes</p>
+                </a>
+                <a href="docs/configuration.html" class="doc-card">
+                    <div class="doc-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Configuration</h3>
+                    <p>Complete configuration reference and examples</p>
+                </a>
+                <a href="docs/alerting.html" class="doc-card">
+                    <div class="doc-icon">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <h3>Alerting</h3>
+                    <p>Set up notifications for Discord, Slack, and more</p>
+                </a>
+                <a href="docs/checkers.html" class="doc-card">
+                    <div class="doc-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3>Custom Checkers</h3>
+                    <p>Create custom checkers for your specific services</p>
+                </a>
+                <a href="https://documenter.getpostman.com/view/208035/TVYKawgU" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>API Reference</h3>
+                    <p>Complete API documentation and examples</p>
+                </a>
+                <a href="https://github.com/Phara0h/sky-puppy" class="doc-card" target="_blank">
+                    <div class="doc-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub</h3>
+                    <p>Source code, issues, and community discussions</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Start Monitoring?</h2>
+            <p>Join hundreds of developers who trust Sky Puppy to keep their services healthy</p>
+            <div class="cta-buttons">
+                <a href="#getting-started" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i>
+                    Get Started Now
+                </a>
+                <a href="https://github.com/Phara0h/sky-puppy" class="btn btn-secondary" target="_blank">
+                    <i class="fab fa-github"></i>
+                    Star on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
+                        <span>Sky Puppy</span>
+                    </div>
+                    <p>Lightning-fast, reliable health monitoring for your services with Prometheus metrics and smart alerting.</p>
+                    <div class="social-links">
+                        <a href="https://github.com/Phara0h/sky-puppy" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://npmjs.com/package/sky-puppy" target="_blank">
+                            <i class="fab fa-npm"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="docs/getting-started.html">Getting Started</a></li>
+                        <li><a href="docs/configuration.html">Configuration</a></li>
+                        <li><a href="docs/alerting.html">Alerting</a></li>
+                        <li><a href="docs/checkers.html">Custom Checkers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://github.com/Phara0h/sky-puppy/issues">Issues</a></li>
+                        <li><a href="https://github.com/Phara0h/sky-puppy/discussions">Discussions</a></li>
+                        <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/CONTRIBUTING.md">Contributing</a></li>
+                        <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/LICENSE">License</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-template">Checker Template</a></li>
+                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-mongodb">MongoDB Checker</a></li>
+                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-cloudflare-status">Cloudflare Checker</a></li>
+                        <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU">API Docs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sky Puppy. Made with ❤️ by the community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

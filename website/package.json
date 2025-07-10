@@ -1,0 +1,51 @@
+{
+  "name": "sky-puppy-website",
+  "version": "1.0.0",
+  "description": "Official website for Sky Puppy - Lightning-fast health monitoring service",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve . -p 3000",
+    "build": "echo 'No build step required for static site'",
+    "validate": "npm run validate:html && npm run validate:css && npm run validate:links",
+    "validate:html": "html-validate **/*.html",
+    "validate:css": "stylelint **/*.css",
+    "validate:links": "linkchecker --check-extern --no-robots --ignore-url='^https://httpbin.org' index.html",
+    "optimize": "npm run optimize:images",
+    "optimize:images": "imagemin **/*.{jpg,jpeg,png,gif} --out-dir=.",
+    "lint": "npm run validate",
+    "test": "npm run validate",
+    "deploy": "echo 'Deployment handled by GitHub Actions'"
+  },
+  "keywords": [
+    "sky-puppy",
+    "health-monitoring",
+    "prometheus",
+    "alerting",
+    "website",
+    "documentation"
+  ],
+  "author": "Sky Puppy Community",
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Phara0h/sky-puppy.git",
+    "directory": "website"
+  },
+  "bugs": {
+    "url": "https://github.com/Phara0h/sky-puppy/issues"
+  },
+  "homepage": "https://phara0h.github.io/sky-puppy/",
+  "devDependencies": {
+    "html-validate": "^8.15.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
+    "imagemin-cli": "^7.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-pngquant": "^9.0.0",
+    "serve": "^14.2.1"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+} 

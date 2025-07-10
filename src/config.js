@@ -1,6 +1,6 @@
 const fs = require('fs');
 var path = require('path');
-var log;
+var log = require('wog')();
 
 class Config {
   constructor() {
@@ -47,7 +47,7 @@ class Config {
       };
     }
 
-    log = require('./misc/logger')(this.settings.skypuppy);
+    log = require('wog')(this.settings.skypuppy);
 
     this.displayTitle();
     this.saveConfig();

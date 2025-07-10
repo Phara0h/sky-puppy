@@ -12,7 +12,7 @@ fasquest.agent = {
     keepAlive: false
   })
 };
-const log = require('./misc/logger')();
+const log = require('wog')();
 
 class Alerts {
   constructor(stats, config, nbars) {

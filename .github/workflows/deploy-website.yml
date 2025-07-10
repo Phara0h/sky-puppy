@@ -1,0 +1,166 @@
+name: Deploy Website to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'website/**'
+      - '.github/workflows/deploy-website.yml'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'website/**'
+      - '.github/workflows/deploy-website.yml'
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Not needed if the latest version of actions/checkout is used
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies (if any)
+        run: |
+          if [ -f "package.json" ]; then
+            npm ci
+          fi
+          if [ -f "website/package.json" ]; then
+            cd website && npm ci
+          fi
+
+      - name: Validate HTML
+        run: |
+          # Install html-validate if not already installed
+          npm install -g html-validate
+          
+          # Validate all HTML files in the website directory
+          html-validate website/**/*.html
+
+      - name: Validate CSS
+        run: |
+          # Install stylelint if not already installed
+          npm install -g stylelint stylelint-config-standard
+          
+          # Create a basic stylelint config if it doesn't exist
+          if [ ! -f ".stylelintrc.json" ]; then
+            echo '{"extends": "stylelint-config-standard"}' > .stylelintrc.json
+          fi
+          
+          # Validate CSS files
+          stylelint "website/**/*.css"
+
+      - name: Check for broken links
+        run: |
+          # Install linkchecker if available
+          if command -v linkchecker &> /dev/null; then
+            linkchecker --check-extern --no-robots --ignore-url="^https://httpbin.org" website/index.html
+          else
+            echo "linkchecker not available, skipping link validation"
+          fi
+
+      - name: Optimize images (if any)
+        run: |
+          # Install imagemin if there are images to optimize
+          if find website -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.gif" | grep -q .; then
+            npm install -g imagemin-cli imagemin-mozjpeg imagemin-pngquant
+            find website -name "*.jpg" -o -name "*.jpeg" | xargs imagemin --out-dir=website
+            find website -name "*.png" | xargs imagemin --out-dir=website
+          fi
+
+      - name: Create sitemap
+        run: |
+          # Get the repository name and owner for the GitHub Pages URL
+          REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
+          OWNER_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f1)
+          
+          # Create a simple sitemap
+          cat > website/sitemap.xml << EOF
+          <?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <url>
+              <loc>https://${OWNER_NAME}.github.io/${REPO_NAME}/</loc>
+              <lastmod>$(date -u +%Y-%m-%d)</lastmod>
+              <changefreq>weekly</changefreq>
+              <priority>1.0</priority>
+            </url>
+            <url>
+              <loc>https://${OWNER_NAME}.github.io/${REPO_NAME}/docs/getting-started.html</loc>
+              <lastmod>$(date -u +%Y-%m-%d)</lastmod>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
+            </url>
+            <url>
+              <loc>https://${OWNER_NAME}.github.io/${REPO_NAME}/docs/configuration.html</loc>
+              <lastmod>$(date -u +%Y-%m-%d)</lastmod>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
+            </url>
+            <url>
+              <loc>https://${OWNER_NAME}.github.io/${REPO_NAME}/docs/alerting.html</loc>
+              <lastmod>$(date -u +%Y-%m-%d)</lastmod>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
+            </url>
+            <url>
+              <loc>https://${OWNER_NAME}.github.io/${REPO_NAME}/docs/checkers.html</loc>
+              <lastmod>$(date -u +%Y-%m-%d)</lastmod>
+              <changefreq>monthly</changefreq>
+              <priority>0.8</priority>
+            </url>
+          </urlset>
+          EOF
+
+      - name: Add robots.txt
+        run: |
+          # Get the repository name and owner for the GitHub Pages URL
+          REPO_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f2)
+          OWNER_NAME=$(echo "${{ github.repository }}" | cut -d'/' -f1)
+          
+          cat > website/robots.txt << EOF
+          User-agent: *
+          Allow: /
+          
+          Sitemap: https://${OWNER_NAME}.github.io/${REPO_NAME}/sitemap.xml
+          EOF
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './website'
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 

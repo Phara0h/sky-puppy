@@ -1,127 +1,98 @@
-# Sky Puppy
-A easy to use reliable endpoint coordinator / health checking service with Prometheus export
+# 🐕 Sky Puppy
 
-[Sky Puppy Postman Collection](https://documenter.getpostman.com/view/208035/TVYKawgU)
+> **Lightning-fast, reliable health monitoring for your services with Prometheus metrics and smart alerting**
 
-## Install
+[![npm version](https://badge.fury.io/js/sky-puppy.svg)](https://badge.fury.io/js/sky-puppy)
+[![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0--or--later-green.svg)](https://opensource.org/licenses/GPL-3.0-or-later)
+[![Node.js CI](https://github.com/Phara0h/sky-puppy/workflows/Node.js%20CI/badge.svg)](https://github.com/Phara0h/sky-puppy/actions)
+
+Sky Puppy is a powerful, lightweight health monitoring service that keeps your applications running smoothly. Monitor HTTP endpoints, databases, and custom services with real-time alerts and Prometheus metrics export.
+
+## ✨ Features
+
+- 🚀 **Lightning Fast**: Built with Fastify for exceptional performance
+- 🔍 **Multiple Checkers**: HTTP/HTTPS, MongoDB, Cloudflare Status, and custom checkers
+- 📊 **Prometheus Metrics**: Built-in metrics export for monitoring dashboards
+- 🔔 **Smart Alerting**: Discord, Slack, and custom webhook integrations
+- ⚡ **Real-time Monitoring**: Configurable check intervals down to seconds
+- 🛡️ **Reliable**: Robust error handling and automatic recovery
+- 🔧 **Easy Configuration**: Simple JSON configuration
+- 🌐 **RESTful API**: Full API for dynamic service management
+- 📈 **Health Status Tracking**: Detailed uptime and performance metrics
+
+## 🚀 Quick Start
+
+### Installation
 
 ```bash
 npm install -g sky-puppy
 ```
 
-## Run
+### Basic Usage
+
+1. **Create a configuration file** (`sky-puppy-config.json`):
+
+```json
+{
+  "services": {
+    "my-website": {
+      "interval": 30,
+      "checker": {
+        "name": "request",
+        "settings": {
+          "uri": "https://mywebsite.com/health",
+          "timeout": 5,
+          "method": "GET"
+        }
+      }
+    }
+  }
+}
+```
+
+2. **Run Sky Puppy**:
 
 ```bash
 sky-puppy
 ```
 
-## Checkers
+3. **Check your service status**:
 
-##### Test
-- [sky-puppy-checker-template](https://github.com/Phara0h/sky-puppy-checker-template) : A Sky Puppy template to use to create your own checkers
+```bash
+curl http://localhost:8069/skypuppy/v1/service/my-website
+```
 
-##### Databases
-- [sky-puppy-checker-mongodb](https://github.com/Phara0h/sky-puppy-checker-mongodb) : A Sky Puppy checker for mongodb
+## 📋 Configuration
 
-##### HTTP/HTTPS
-- request (native)
+Sky Puppy uses a JSON configuration file to define services, checkers, and alerters.
 
-##### Services
-- [sky-puppy-checker-cloudflare-status](https://github.com/Phara0h/sky-puppy-checker-cloudflare-status) : A Sky Puppy checker for checking cloudflarestatus.com api
-
-
-## Sample Config
-
-Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ran at.
+### Service Configuration
 
 ```json
 {
-  "alerters": {
-    "discord_down": {
-      "uri": "http://discord.com",
-      "json": true,
-      "method": "PUT",
-      "body": {
-        "embeds": [
-          {
-            "title": "{{service_name}} is {{alert_type}}!",
-            "description": "This service was healthy for {{last_healthy_total_duration}} seconds!",
-            "color": 14828098,
-            "footer": {
-              "text": ""
-            },
-            "timestamp": "{{timestamp}}"
-          }
-        ],
-        "username": "Sky Puppy",
-        "avatar_url": "https://i.imgur.com/J5vIVSt.png"
-      }
-    },
-    "discord_unhealthy": {
-      "uri": "http://discord.com",
-      "json": true,
-      "method": "PUT",
-      "body": {
-        "embeds": [
-          {
-            "title": "{{service_name}} is {{alert_type}}!",
-            "description": "This service was healthy for {{last_healthy_total_duration}} seconds!",
-            "color": 14852674,
-            "footer": {
-              "text": ""
-            },
-            "timestamp": "{{timestamp}}"
-          }
-        ],
-        "username": "Sky Puppy",
-        "avatar_url": "https://i.imgur.com/J5vIVSt.png"
-      }
-    },
-    "discord_healthy": {
-      "uri": "http://discord.com",
-      "json": true,
-      "method": "PUT",
-      "body": {
-        "embeds": [
-          {
-            "title": "{{service_name}} is {{alert_type}}!",
-            "description": "Carry on, looks like things are back! We were down for {{last_unhealthy_total_duration}} seconds.",
-            "color": 6480450,
-            "footer": {
-              "text": ""
-            },
-            "timestamp": "{{timestamp}}"
-          }
-        ],
-        "username": "Sky Puppy",
-        "avatar_url": "https://i.imgur.com/3rfFeOu.png"
-      }
-    }
-  },
   "services": {
-    "your_service": {
-      "interval": 3,
-      "start_delay": 2,
+    "service-name": {
+      "interval": 30,                    // Check interval in seconds
+      "start_delay": 5,                  // Initial delay before first check
+      "expected_status": 200,            // Expected HTTP status code
       "checker": {
-          "name": "request",
-          "settings": {
-            "uri": "http://127.0.0.1/a/cool/endpoint",
-            "timeout": 2,
-            "json": true,
-            "method": "PUT",
-            "body": {
-              "test": "sweet"
-            },
+        "name": "request",               // Checker type
+        "settings": {
+          "uri": "https://api.example.com/health",
+          "timeout": 5,                  // Request timeout in seconds
+          "method": "GET",               // HTTP method
+          "headers": {                   // Custom headers
+            "Authorization": "Bearer token"
+          },
+          "body": {                      // Request body (for POST/PUT)
+            "test": "data"
           }
+        }
       },
-      "alerts": [
+      "alerts": [                        // Alert configurations
         {
           "type": "down",
           "alerter": "discord_down"
-        },
-        {
-          "type": "unhealthy",
-          "alerter": "discord_unhealthy"
         },
         {
           "type": "healthy",
@@ -129,18 +100,221 @@ Sky Puppy looks for a file called `sky-puppy-config.json` in the folder it is ra
         }
       ]
     }
-  },
-  "skypuppy": {
-    "version": "1.0.0",
-    "log": {
-        "enable": true,
-        "colors": true,
-        "level": "info"
+  }
+}
+```
+
+### Alert Configuration
+
+```json
+{
+  "alerters": {
+    "discord_down": {
+      "uri": "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL",
+      "json": true,
+      "method": "POST",
+      "body": {
+        "embeds": [
+          {
+            "title": "🚨 {{service_name}} is {{alert_type}}!",
+            "description": "Service was healthy for {{last_healthy_total_duration}} seconds",
+            "color": 14828098,
+            "timestamp": "{{timestamp}}"
+          }
+        ],
+        "username": "Sky Puppy",
+        "avatar_url": "https://i.imgur.com/J5vIVSt.png"
+      }
     }
   }
 }
-
 ```
+
+## 🔌 Available Checkers
+
+### Built-in Checkers
+
+- **`request`**: HTTP/HTTPS endpoint monitoring
+- **`mongodb`**: MongoDB connection health checks
+- **`cloudflare-status`**: Cloudflare service status monitoring
+
+### Custom Checkers
+
+Create your own checkers using the [checker template](https://github.com/Phara0h/sky-puppy-checker-template):
+
+```bash
+npm install -g sky-puppy-checker-template
+```
+
+## 📊 Monitoring & Metrics
+
+### Health Endpoints
+
+- `GET /skypuppy/health` - Service health status
+- `GET /skypuppy/metrics` - Prometheus metrics export
+
+### API Endpoints
+
+- `GET /skypuppy/v1/service/{name}` - Get service status
+- `POST /skypuppy/v1/service` - Add new service
+- `PUT /skypuppy/v1/service/{name}` - Update service
+- `DELETE /skypuppy/v1/service/{name}` - Remove service
+
+### Prometheus Metrics
+
+Sky Puppy exports the following metrics:
+
+- `sky_puppy_service_health_status` - Service health status (0=down, 1=unhealthy, 2=healthy)
+- `sky_puppy_service_response_time` - Service response time in milliseconds
+- `sky_puppy_service_check_count` - Total number of checks performed
+
+## 🎯 Use Cases
+
+### Web Application Monitoring
+```json
+{
+  "services": {
+    "web-app": {
+      "interval": 30,
+      "checker": {
+        "name": "request",
+        "settings": {
+          "uri": "https://myapp.com/api/health",
+          "timeout": 10,
+          "method": "GET"
+        }
+      }
+    }
+  }
+}
+```
+
+### Database Health Checks
+```json
+{
+  "services": {
+    "mongodb": {
+      "interval": 60,
+      "checker": {
+        "name": "sky-puppy-checker-mongodb",
+        "settings": {
+          "uri": "mongodb://localhost:27017",
+          "database": "myapp"
+        }
+      }
+    }
+  }
+}
+```
+
+### External Service Monitoring
+```json
+{
+  "services": {
+    "cloudflare": {
+      "interval": 300,
+      "checker": {
+        "name": "sky-puppy-checker-cloudflare-status",
+        "settings": {
+          "services": ["cloudflare-dns", "cloudflare-cdn"]
+        }
+      }
+    }
+  }
+}
+```
+
+## 🔧 Advanced Configuration
+
+### Environment Variables
+
+- `SKY_PUPPY_PORT` - Server port (default: 8069)
+- `SKY_PUPPY_IP` - Server IP (default: 0.0.0.0)
+- `SKY_PUPPY_CONFIG_PATH` - Custom config file path
+
+### Logging Configuration
+
+```json
+{
+  "skypuppy": {
+    "version": "1.0.0",
+    "log": {
+      "enable": true,
+      "colors": true,
+      "level": "info"
+    }
+  }
+}
+```
+
+## 🚀 Deployment
+
+### Docker
+
+```dockerfile
+FROM node:18-alpine
+RUN npm install -g sky-puppy
+COPY sky-puppy-config.json /app/
+WORKDIR /app
+EXPOSE 8069
+CMD ["sky-puppy"]
+```
+
+### Systemd Service
+
+```ini
+[Unit]
+Description=Sky Puppy Health Monitor
+After=network.target
+
+[Service]
+Type=simple
+User=sky-puppy
+WorkingDirectory=/opt/sky-puppy
+ExecStart=/usr/bin/sky-puppy
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [contributing guidelines](CONTRIBUTING.md) for details.
+
+### Development Setup
+
+```bash
+git clone https://github.com/Phara0h/sky-puppy.git
+cd sky-puppy
+npm install
+npm test
+```
+
+## 📚 Documentation
+
+- [API Reference](https://documenter.getpostman.com/view/208035/TVYKawgU)
+- [Configuration Guide](docs/configuration.md)
+- [Checker Development](docs/checkers.md)
+- [Alerting Setup](docs/alerting.md)
+
+## 📄 License
+
+This project is licensed under the GPL-3.0-or-later License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [Fastify](https://fastify.io/) for blazing fast performance
+- Prometheus metrics powered by [nstats](https://github.com/Phara0h/nstats)
+- Templating with the tiniest and fastest javascript templating engine [nbars](https://github.com/Phara0h/nbars)
+
+---
+
+**Made with ❤️ by the Sky Puppy community**
+
+[Report a Bug](https://github.com/Phara0h/sky-puppy/issues) | [Request a Feature](https://github.com/Phara0h/sky-puppy/issues) | [Star on GitHub](https://github.com/Phara0h/sky-puppy)
+
 
 ## Changelog
 

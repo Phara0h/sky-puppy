@@ -1,16 +1,21 @@
 #!/usr/bin/env node
 
+const Config = require('./config.js');
 const Stats = require('./misc/stats.js');
+const HealthCheck = require('./health-check.js');
+const nstats = require('nstats')();
+const app = require('fastify')({
+  logger: false
+});
 const stats = new Stats();
+const NBars = require('nbars/commonjs.js');
 
 async function start() {
-  const { NBars } = await import('nbars');
-  const HealthCheck = require('./health-check.js');
-  const healthCheck = new HealthCheck(stats, NBars);
-  const nstats = require('nstats')();
-  const app = require('fastify')({
-    logger: false
-  });
+
+  var config = new Config();
+  const stats = new Stats();
+  const healthCheck = new HealthCheck(stats, NBars, config);
+
 
   app.setErrorHandler(function (error, request, reply) {
     console.error(error);
@@ -25,9 +30,10 @@ async function start() {
   app.get('/skypuppy/metrics', (req, res) => {
     res.code(200).send(nstats.toPrometheus());
   });
-  app.get('/skypuppy/health', (req, res) =>
-    res.code(200).send('All Systems Nominal')
-  );
+  
+  app.get('/skypuppy/health', (req, res) => {
+    res.code(200).send('All Systems Nominal');
+  });
 
   // nstats
   app.register(nstats.fastify(), {

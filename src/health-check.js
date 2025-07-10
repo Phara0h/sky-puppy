@@ -1,15 +1,14 @@
-const Config = require('./config.js');
-var config = new Config();
-const log = require('./misc/logger')();
+const log = require('wog')();
 const Alerts = require('./alerts.js');
 
 class HealthCheck {
-  constructor(stats, nbars) {
+  constructor(stats, nbars, config) {
     this.checkers = {};
     this.services = {};
     this.alerters = {};
     this.stats = stats;
     this.alerts = new Alerts(stats, config, nbars);
+    this.config = config;
     var checkersKeys = Object.keys(config.checkers);
     var servicesKeys = Object.keys(config.services);
 
@@ -52,13 +51,13 @@ class HealthCheck {
       this.editService(name, service);
     } else {
       log.info(`Adding service ${name} ...`);
-      config.addService(name, service);
+      this.config.addService(name, service);
       this.startService(name, service);
     }
   }
 
   getService(name) {
-    return config.getService(name);
+    return this.config.getService(name);
   }
 
   getServiceStatus(name) {
@@ -101,7 +100,7 @@ class HealthCheck {
       log.info(`Deleting service ${name} ...`);
       clearTimeout(this.services[name]._sTimeoutHandler);
       delete this.services[name];
-      config.deleteService(name);
+      this.config.deleteService(name);
     }
 
     return false;
@@ -167,7 +166,7 @@ class HealthCheck {
       }
       nService.code_messages = checkerCodeMessages;
       //log.debug(nService.code_messages);
-      nService.checker = await checker.mod(config, nService, checkerSettings);
+      nService.checker = await checker.mod(this.config, nService, checkerSettings);
       await nService.checker.init();
 
       this.services[name] = nService;
@@ -181,7 +180,7 @@ class HealthCheck {
   getStatus(service) {}
 
   getConfig() {
-    return config;
+    return this.config;
   }
 
   _mapMessages(code, message, service) {
@@ -214,13 +213,13 @@ class HealthCheck {
       if (service.config.expected_status != service.status.code) {
         service.status.up = 0;
         service.status.count.unhealthy_status++;
-        log.info(service.name, ' Unhealthy status: ' + service.status.code);
+        log.warn(service.name, ' Unhealthy status: ' + service.status.code);
       }
 
       if (service.status.time > service.config.expected_response_time) {
         service.status.up = 0;
         service.status.count.unhealthy_response_time++;
-        log.info(
+        log.warn(
           service.name,
           ' Unhealthy response time: ' + service.status.time.toFixed(2) + 'ms'
         );
