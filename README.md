@@ -4,6 +4,7 @@
 > **Lightning-fast, reliable health monitoring for your services with Prometheus metrics and smart alerting**
 
 [![npm version](https://badge.fury.io/js/sky-puppy.svg)](https://badge.fury.io/js/sky-puppy) [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0--or--later-green.svg)](https://opensource.org/licenses/GPL-3.0-or-later)
+
 Sky Puppy is a powerful, lightweight health monitoring service that keeps your applications running smoothly. Monitor HTTP endpoints, databases, and custom services with real-time alerts and Prometheus metrics export.
 
 ## ✨ Features
