@@ -1,6 +1,12 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.4.1](https://github.com/Phara0h/sky-puppy/compare/v1.4.0...v1.4.1)
+
+#####   [`370545f`](https://github.com/Phara0h/sky-puppy/commit/370545f249af288ef411ccd7b9163f0c3f540264)update mdsquash
+
 #### [v1.4.0](https://github.com/Phara0h/sky-puppy/compare/v1.3.8...v1.4.0)
+
+> 10 July 2025
 
 #####   [`596e16d`](https://github.com/Phara0h/sky-puppy/commit/596e16d919295b0321c8460a436ba3ad47764949)Tons of documentation, new website and cleanup
 
