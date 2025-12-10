@@ -9,15 +9,15 @@ Sky Puppy is a powerful, lightweight health monitoring service that keeps your a
 
 ## ✨ Features
 
-- 🚀 **Lightning Fast**: Built with Fastify for exceptional performance
-- 🔍 **Multiple Checkers**: HTTP/HTTPS, MongoDB, Cloudflare Status, and custom checkers
-- 📊 **Prometheus Metrics**: Built-in metrics export for monitoring dashboards
-- 🔔 **Smart Alerting**: Discord, Slack, and custom webhook integrations
-- ⚡ **Real-time Monitoring**: Configurable check intervals down to seconds
-- 🛡️ **Reliable**: Robust error handling and automatic recovery
-- 🔧 **Easy Configuration**: Simple JSON configuration
-- 🌐 **RESTful API**: Full API for dynamic service management
-- 📈 **Health Status Tracking**: Detailed uptime and performance metrics
+- **Lightning Fast**: Built with Fastify for exceptional performance
+- **Multiple Checkers**: HTTP/HTTPS, MongoDB, Cloudflare Status, and custom checkers
+- **Prometheus Metrics**: Built-in metrics export for monitoring dashboards
+- **Smart Alerting**: Discord, Slack, and custom webhook integrations
+- **Real-time Monitoring**: Configurable check intervals down to seconds
+- **Reliable**: Robust error handling and automatic recovery
+- **Easy Configuration**: Simple JSON configuration
+- **RESTful API**: Full API for dynamic service management
+- **Health Status Tracking**: Detailed uptime and performance metrics
 
 ## 🚀 Quick Start
 

@@ -1,89 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Checkers - Sky Puppy Documentation</title>
-    <meta name="description" content="Create custom health checkers for your specific monitoring needs with Sky Puppy.">
-    <meta name="keywords" content="health monitoring, prometheus, alerting, discord, slack, webhooks, node.js, fastify, custom checkers, plugins">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sky-puppy.com/docs/checkers.html">
-    <meta property="og:title" content="Custom Checkers - Sky Puppy Documentation">
-    <meta property="og:description" content="Create custom health checkers for your specific monitoring needs with Sky Puppy.">
-    <meta property="og:image" content="https://sky-puppy.com/images/logo.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Checkers - Sky Puppy Documentation</title>
+  <meta name="description" content="Create custom health checkers for your specific monitoring needs with Sky Puppy.">
+  <meta name="keywords"
+    content="health monitoring, prometheus, alerting, discord, slack, webhooks, node.js, fastify, custom checkers, plugins">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://sky-puppy.com/docs/checkers.html">
-    <meta property="twitter:title" content="Custom Checkers - Sky Puppy Documentation">
-    <meta property="twitter:description" content="Create custom health checkers for your specific monitoring needs with Sky Puppy.">
-    <meta property="twitter:image" content="https://sky-puppy.com/images/logo.png">
-    
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sky-puppy.com/docs/checkers.html">
+  <meta property="og:title" content="Custom Checkers - Sky Puppy Documentation">
+  <meta property="og:description"
+    content="Create custom health checkers for your specific monitoring needs with Sky Puppy.">
+  <meta property="og:image" content="https://sky-puppy.com/images/logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://sky-puppy.com/docs/checkers.html">
+  <meta property="twitter:title" content="Custom Checkers - Sky Puppy Documentation">
+  <meta property="twitter:description"
+    content="Create custom health checkers for your specific monitoring needs with Sky Puppy.">
+  <meta property="twitter:image" content="https://sky-puppy.com/images/logo.png">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
-                <span>Sky Puppy</span>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="../index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../index.html#features" class="nav-link">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../index.html#documentation" class="nav-link">Docs</a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://github.com/Phara0h/sky-puppy" class="nav-link" target="_blank">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
+        <span>Sky Puppy</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="../index.html#features" class="nav-link">Features</a>
+        </li>
+        <li class="nav-item">
+          <a href="../index.html#documentation" class="nav-link">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a href="https://github.com/Phara0h/sky-puppy" class="nav-link" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
 
-    <div class="docs-container">
-        <div class="docs-nav">
-            <ul>
-                <li><a href="getting-started.html">Getting Started</a></li>
-                <li><a href="configuration.html">Configuration</a></li>
-                <li><a href="alerting.html">Alerting</a></li>
-                <li><a href="checkers.html" class="active">Custom Checkers</a></li>
-                <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU" target="_blank">API Reference</a></li>
-            </ul>
-        </div>
+  <div class="docs-container">
+    <div class="docs-nav">
+      <ul>
+        <li><a href="getting-started.html">Getting Started</a></li>
+        <li><a href="configuration.html">Configuration</a></li>
+        <li><a href="alerting.html">Alerting</a></li>
+        <li><a href="checkers.html" class="active">Custom Checkers</a></li>
+        <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU" target="_blank">API Reference</a></li>
+      </ul>
+    </div>
 
-        <div class="docs-content">
-            <h1>Custom Checkers Guide</h1>
-            
-            <p>Sky Puppy's modular architecture allows you to create custom checkers for any type of service or system. This guide shows you how to build your own checkers and integrate them with Sky Puppy.</p>
+    <div class="docs-content">
+      <h1>Custom Checkers Guide</h1>
 
-            <h2>Checker Architecture</h2>
-            <p>A Sky Puppy checker is a Node.js module that exports a function with specific methods. The checker is responsible for:</p>
-            <ul>
-                <li><strong>Initialization</strong> - Setting up connections, configurations, etc.</li>
-                <li><strong>Health Checking</strong> - Performing the actual health check</li>
-                <li><strong>Cleanup</strong> - Properly closing connections and resources</li>
-            </ul>
+      <p>Sky Puppy's modular architecture allows you to create custom checkers for any type of service or system. This
+        guide shows you how to build your own checkers and integrate them with Sky Puppy.</p>
 
-            <h2>Basic Checker Structure</h2>
-            <pre><code>class MyCustomChecker {
+      <h2>Checker Architecture</h2>
+      <p>A Sky Puppy checker is a Node.js module that exports a function with specific methods. The checker is
+        responsible for:</p>
+      <ul>
+        <li><strong>Initialization</strong> - Setting up connections, configurations, etc.</li>
+        <li><strong>Health Checking</strong> - Performing the actual health check</li>
+        <li><strong>Cleanup</strong> - Properly closing connections and resources</li>
+      </ul>
+
+      <h2>Basic Checker Structure</h2>
+      <pre><code>class MyCustomChecker {
   constructor(config, service, settings) {
     this.config = config;
     this.service = service;
@@ -104,10 +111,10 @@ module.exports = function(config, service, settings) {
   return new MyCustomChecker(config, service, settings);
 };</code></pre>
 
-            <h2>Creating Your First Checker</h2>
-            <p>Let's create a simple checker that monitors a file's existence:</p>
+      <h2>Creating Your First Checker</h2>
+      <p>Let's create a simple checker that monitors a file's existence:</p>
 
-            <pre><code>const fs = require('fs').promises;
+      <pre><code>const fs = require('fs').promises;
 const path = require('path');
 
 class FileChecker {
@@ -149,10 +156,10 @@ module.exports = function(config, service, settings) {
   return new FileChecker(config, service, settings);
 };</code></pre>
 
-            <h2>Advanced Checker Example</h2>
-            <p>Here's a more complex checker that monitors a Redis database:</p>
+      <h2>Advanced Checker Example</h2>
+      <p>Here's a more complex checker that monitors a Redis database:</p>
 
-            <pre><code>const Redis = require('ioredis');
+      <pre><code>const Redis = require('ioredis');
 
 class RedisChecker {
   constructor(config, service, settings) {
@@ -221,10 +228,10 @@ module.exports = function(config, service, settings) {
   return new RedisChecker(config, service, settings);
 };</code></pre>
 
-            <h2>Checker Configuration</h2>
-            <p>To use your custom checker, add it to your Sky Puppy configuration:</p>
+      <h2>Checker Configuration</h2>
+      <p>To use your custom checker, add it to your Sky Puppy configuration:</p>
 
-            <pre><code>{
+      <pre><code>{
   "checkers": {
     "my-file-checker": {
       "file_path": "/var/log/important.log"
@@ -269,10 +276,11 @@ module.exports = function(config, service, settings) {
   }
 }</code></pre>
 
-            <h2>Custom Status Messages</h2>
-            <p>You can customize the messages returned by your checker for different status codes using the <code>code_messages</code> feature:</p>
+      <h2>Custom Status Messages</h2>
+      <p>You can customize the messages returned by your checker for different status codes using the
+        <code>code_messages</code> feature:</p>
 
-            <pre><code>{
+      <pre><code>{
   "services": {
     "my-service": {
       "interval": 30,
@@ -292,19 +300,21 @@ module.exports = function(config, service, settings) {
   }
 }</code></pre>
 
-            <p>The <code>code_messages</code> object maps HTTP status codes to custom messages. When your checker returns a specific status code, Sky Puppy will use the corresponding message instead of the default one.</p>
+      <p>The <code>code_messages</code> object maps HTTP status codes to custom messages. When your checker returns a
+        specific status code, Sky Puppy will use the corresponding message instead of the default one.</p>
 
-            <div class="note">
-                <strong>Note:</strong> The <code>code_messages</code> can be defined both globally in the <code>checkers</code> section and locally in each service's checker configuration. Local settings override global ones.
-            </div>
+      <div class="note">
+        <strong>Note:</strong> The <code>code_messages</code> can be defined both globally in the <code>checkers</code>
+        section and locally in each service's checker configuration. Local settings override global ones.
+      </div>
 
-            <h2>Built-in Checkers</h2>
-            <p>Sky Puppy comes with a built-in HTTP request checker:</p>
+      <h2>Built-in Checkers</h2>
+      <p>Sky Puppy comes with a built-in HTTP request checker:</p>
 
-            <h3>Request Checker</h3>
-            <p>The <code>request</code> checker is the default HTTP health checker:</p>
+      <h3>Request Checker</h3>
+      <p>The <code>request</code> checker is the default HTTP health checker:</p>
 
-            <pre><code>{
+      <pre><code>{
   "services": {
     "web-service": {
       "interval": 30,
@@ -327,65 +337,65 @@ module.exports = function(config, service, settings) {
   }
 }</code></pre>
 
-            <h3>Request Checker Options</h3>
-            <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-                <thead>
-                    <tr style="background: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Option</th>
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Type</th>
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Default</th>
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>uri</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">string</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">required</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">URL to check</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>method</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">string</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">GET</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">HTTP method</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>timeout</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">60</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Timeout in seconds</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>headers</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">object</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">{}</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">HTTP headers</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>body</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">any</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">null</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Request body</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>json</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">boolean</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">false</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Send body as JSON</td>
-                    </tr>
-                </tbody>
-            </table>
+      <h3>Request Checker Options</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+        <thead>
+          <tr style="background: var(--bg-secondary);">
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Option</th>
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Type</th>
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Default</th>
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>uri</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">string</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">required</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">URL to check</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>method</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">string</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">GET</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">HTTP method</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>timeout</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">60</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Timeout in seconds</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>headers</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">object</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">{}</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">HTTP headers</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>body</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">any</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">null</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Request body</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>json</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">boolean</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">false</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Send body as JSON</td>
+          </tr>
+        </tbody>
+      </table>
 
-            <h2>Publishing Your Checker</h2>
-            <p>To make your checker available to others, publish it as an npm package:</p>
+      <h2>Publishing Your Checker</h2>
+      <p>To make your checker available to others, publish it as an npm package:</p>
 
-            <div class="note">
-                <strong>Package Name Convention:</strong> Use <code>sky-puppy-checker-{service-name}</code> format
-            </div>
+      <div class="note">
+        <strong>Package Name Convention:</strong> Use <code>sky-puppy-checker-{service-name}</code> format
+      </div>
 
-            <h3>1. Create a package.json</h3>
-            <pre><code>{
+      <h3>1. Create a package.json</h3>
+      <pre><code>{
   "name": "sky-puppy-checker-my-service",
   "version": "1.0.0",
   "description": "Sky Puppy checker for MyService",
@@ -398,19 +408,19 @@ module.exports = function(config, service, settings) {
   }
 }</code></pre>
 
-            <h3>2. Create an index.js</h3>
-            <pre><code>const MyServiceChecker = require('./checker');
+      <h3>2. Create an index.js</h3>
+      <pre><code>const MyServiceChecker = require('./checker');
 
 module.exports = MyServiceChecker;</code></pre>
 
-            <h3>3. Publish to npm</h3>
-            <pre><code>npm publish</code></pre>
+      <h3>3. Publish to npm</h3>
+      <pre><code>npm publish</code></pre>
 
-            <h2>Best Practices</h2>
+      <h2>Best Practices</h2>
 
-            <h3>1. Error Handling</h3>
-            <p>Always handle errors gracefully and provide meaningful error messages:</p>
-            <pre><code>async check() {
+      <h3>1. Error Handling</h3>
+      <p>Always handle errors gracefully and provide meaningful error messages:</p>
+      <pre><code>async check() {
   try {
     // Your check logic
     return { code: 200, message: 'Service is up' };
@@ -426,9 +436,9 @@ module.exports = MyServiceChecker;</code></pre>
   }
 }</code></pre>
 
-            <h3>2. Resource Management</h3>
-            <p>Properly manage connections and resources:</p>
-            <pre><code>async init() {
+      <h3>2. Resource Management</h3>
+      <p>Properly manage connections and resources:</p>
+      <pre><code>async init() {
   this.connection = await createConnection(this.settings);
 }
 
@@ -439,9 +449,9 @@ async close() {
   }
 }</code></pre>
 
-            <h3>3. Configuration Validation</h3>
-            <p>Validate required settings in the <code>init()</code> method:</p>
-            <pre><code>async init() {
+      <h3>3. Configuration Validation</h3>
+      <p>Validate required settings in the <code>init()</code> method:</p>
+      <pre><code>async init() {
   const required = ['host', 'port', 'database'];
   for (const field of required) {
     if (!this.settings[field]) {
@@ -450,26 +460,26 @@ async close() {
   }
 }</code></pre>
 
-            <h3>4. Performance Considerations</h3>
-            <ul>
-                <li>Use timeouts to prevent hanging checks</li>
-                <li>Implement connection pooling for database checkers</li>
-                <li>Cache results when appropriate</li>
-                <li>Use lightweight operations for frequent checks</li>
-            </ul>
+      <h3>4. Performance Considerations</h3>
+      <ul>
+        <li>Use timeouts to prevent hanging checks</li>
+        <li>Implement connection pooling for database checkers</li>
+        <li>Cache results when appropriate</li>
+        <li>Use lightweight operations for frequent checks</li>
+      </ul>
 
-            <h3>5. Security</h3>
-            <ul>
-                <li>Validate file paths and URLs</li>
-                <li>Sanitize user inputs</li>
-                <li>Use environment variables for sensitive data</li>
-                <li>Implement proper authentication</li>
-            </ul>
+      <h3>5. Security</h3>
+      <ul>
+        <li>Validate file paths and URLs</li>
+        <li>Sanitize user inputs</li>
+        <li>Use environment variables for sensitive data</li>
+        <li>Implement proper authentication</li>
+      </ul>
 
-            <h2>Testing Your Checker</h2>
-            <p>Create tests for your checker:</p>
+      <h2>Testing Your Checker</h2>
+      <p>Create tests for your checker:</p>
 
-            <pre><code>const assert = require('assert');
+      <pre><code>const assert = require('assert');
 const MyChecker = require('./checker');
 
 describe('MyChecker', () => {
@@ -496,105 +506,113 @@ describe('MyChecker', () => {
   });
 });</code></pre>
 
-            <h2>Available 3rd Party Checkers</h2>
+      <h2>Available 3rd Party Checkers</h2>
 
-            <h3>Database Checkers</h3>
-            <ul>
-                <li><strong>MongoDB</strong>: <a href="https://github.com/Phara0h/sky-puppy-checker-mongodb" target="_blank">sky-puppy-checker-mongodb</a></li>
-            </ul>
+      <h3>Database Checkers</h3>
+      <ul>
+        <li><strong>MongoDB</strong>: <a href="https://github.com/Phara0h/sky-puppy-checker-mongodb"
+            target="_blank">sky-puppy-checker-mongodb</a></li>
+      </ul>
 
-            <h3>Service Checkers</h3>
-            <ul>
-                <li><strong>Cloudflare Status</strong>: <a href="https://github.com/Phara0h/sky-puppy-checker-cloudflare-status" target="_blank">sky-puppy-checker-cloudflare-status</a></li>
-            </ul>
+      <h3>Service Checkers</h3>
+      <ul>
+        <li><strong>Cloudflare Status</strong>: <a href="https://github.com/Phara0h/sky-puppy-checker-cloudflare-status"
+            target="_blank">sky-puppy-checker-cloudflare-status</a></li>
+      </ul>
 
-            <div class="success">
-                <strong>Ready to create your own checker?</strong> Check the <a href="https://github.com/Phara0h/sky-puppy-checker-template" target="_blank">checker template</a> for a complete example.
-            </div>
+      <div class="success">
+        <strong>Ready to create your own checker?</strong> Check the <a
+          href="https://github.com/Phara0h/sky-puppy-checker-template" target="_blank">checker template</a> for a
+        complete example.
+      </div>
 
-            <div class="note">
-                <strong>Need Help?</strong> Join our <a href="https://github.com/Phara0h/sky-puppy/discussions" target="_blank">Discussions</a> or report issues on <a href="https://github.com/Phara0h/sky-puppy/issues" target="_blank">GitHub</a>.
-            </div>
-        </div>
+      <div class="note">
+        <strong>Need Help?</strong> Join our <a href="https://github.com/Phara0h/sky-puppy/discussions"
+          target="_blank">Discussions</a> or report issues on <a href="https://github.com/Phara0h/sky-puppy/issues"
+          target="_blank">GitHub</a>.
+      </div>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
-                        <span>Sky Puppy</span>
-                    </div>
-                    <p>Lightning-fast, reliable health monitoring for your services with Prometheus metrics and smart alerting.</p>
-                    <div class="social-links">
-                        <a href="https://github.com/Phara0h/sky-puppy" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://npmjs.com/package/sky-puppy" target="_blank">
-                            <i class="fab fa-npm"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Documentation</h4>
-                    <ul>
-                        <li><a href="getting-started.html">Getting Started</a></li>
-                        <li><a href="configuration.html">Configuration</a></li>
-                        <li><a href="alerting.html">Alerting</a></li>
-                        <li><a href="checkers.html">Custom Checkers</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Community</h4>
-                    <ul>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/issues">Issues</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/discussions">Discussions</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/CONTRIBUTING.md">Contributing</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/LICENSE">License</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-template">Checker Template</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-mongodb">MongoDB Checker</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-cloudflare-status">Cloudflare Checker</a></li>
-                        <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU">API Docs</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Sky Puppy. Made with ❤️ by the community.</p>
-            </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
+            <span>Sky Puppy</span>
+          </div>
+          <p>Lightning-fast, reliable health monitoring for your services with Prometheus metrics and smart alerting.
+          </p>
+          <div class="social-links">
+            <a href="https://github.com/Phara0h/sky-puppy" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://npmjs.com/package/sky-puppy" target="_blank">
+              <i class="fab fa-npm"></i>
+            </a>
+          </div>
         </div>
-    </footer>
+        <div class="footer-section">
+          <h4>Documentation</h4>
+          <ul>
+            <li><a href="getting-started.html">Getting Started</a></li>
+            <li><a href="configuration.html">Configuration</a></li>
+            <li><a href="alerting.html">Alerting</a></li>
+            <li><a href="checkers.html">Custom Checkers</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="https://github.com/Phara0h/sky-puppy/issues">Issues</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy/discussions">Discussions</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/CONTRIBUTING.md">Contributing</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/LICENSE">License</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="https://github.com/Phara0h/sky-puppy-checker-template">Checker Template</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy-checker-mongodb">MongoDB Checker</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy-checker-cloudflare-status">Cloudflare Checker</a></li>
+            <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU">API Docs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Sky Puppy. Made with ❤️ by the community.</p>
+      </div>
+    </div>
+  </footer>
 
-    <a href="#" class="back-to-top" id="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+  <a href="#" class="back-to-top" id="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
 
-    <script src="../script.js"></script>
-    <script>
-        // Back to top functionality
-        const backToTop = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
+  <script src="../script.js"></script>
+  <script>
+    // Back to top functionality
+    const backToTop = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
+
 </html>

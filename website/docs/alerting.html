@@ -1,103 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alerting - Sky Puppy Documentation</title>
-    <meta name="description" content="Set up alerts and notifications for health check failures with Sky Puppy.">
-    <meta name="keywords" content="health monitoring, prometheus, alerting, discord, slack, webhooks, node.js, fastify, notifications">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sky-puppy.com/docs/alerting.html">
-    <meta property="og:title" content="Alerting - Sky Puppy Documentation">
-    <meta property="og:description" content="Set up alerts and notifications for health check failures with Sky Puppy.">
-    <meta property="og:image" content="https://sky-puppy.com/images/logo.png">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://sky-puppy.com/docs/alerting.html">
-    <meta property="twitter:title" content="Alerting - Sky Puppy Documentation">
-    <meta property="twitter:description" content="Set up alerts and notifications for health check failures with Sky Puppy.">
-    <meta property="twitter:image" content="https://sky-puppy.com/images/logo.png">
-    
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alerting - Sky Puppy Documentation</title>
+  <meta name="description" content="Set up alerts and notifications for health check failures with Sky Puppy.">
+  <meta name="keywords"
+    content="health monitoring, prometheus, alerting, discord, slack, webhooks, node.js, fastify, notifications">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sky-puppy.com/docs/alerting.html">
+  <meta property="og:title" content="Alerting - Sky Puppy Documentation">
+  <meta property="og:description" content="Set up alerts and notifications for health check failures with Sky Puppy.">
+  <meta property="og:image" content="https://sky-puppy.com/images/logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://sky-puppy.com/docs/alerting.html">
+  <meta property="twitter:title" content="Alerting - Sky Puppy Documentation">
+  <meta property="twitter:description"
+    content="Set up alerts and notifications for health check failures with Sky Puppy.">
+  <meta property="twitter:image" content="https://sky-puppy.com/images/logo.png">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
-                <span>Sky Puppy</span>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="../index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../index.html#features" class="nav-link">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../index.html#documentation" class="nav-link">Docs</a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://github.com/Phara0h/sky-puppy" class="nav-link" target="_blank">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
+        <span>Sky Puppy</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="../index.html#features" class="nav-link">Features</a>
+        </li>
+        <li class="nav-item">
+          <a href="../index.html#documentation" class="nav-link">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a href="https://github.com/Phara0h/sky-puppy" class="nav-link" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
 
-    <div class="docs-container">
-        <div class="docs-nav">
-            <ul>
-                <li><a href="getting-started.html">Getting Started</a></li>
-                <li><a href="configuration.html">Configuration</a></li>
-                <li><a href="alerting.html" class="active">Alerting</a></li>
-                <li><a href="checkers.html">Custom Checkers</a></li>
-                <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU" target="_blank">API Reference</a></li>
-            </ul>
-        </div>
+  <div class="docs-container">
+    <div class="docs-nav">
+      <ul>
+        <li><a href="getting-started.html">Getting Started</a></li>
+        <li><a href="configuration.html">Configuration</a></li>
+        <li><a href="alerting.html" class="active">Alerting</a></li>
+        <li><a href="checkers.html">Custom Checkers</a></li>
+        <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU" target="_blank">API Reference</a></li>
+      </ul>
+    </div>
 
-        <div class="docs-content">
-            <h1>Alerting Guide</h1>
-            
-            <p>Sky Puppy provides flexible alerting capabilities to notify you when your services change status. This guide covers setting up alerts for various platforms and best practices for effective monitoring.</p>
+    <div class="docs-content">
+      <h1>Alerting Guide</h1>
 
-            <h2>Alert Types</h2>
-            <p>Sky Puppy supports five types of alerts:</p>
-            <ul>
-                <li><strong>down</strong> - Service is completely unavailable (status code -1)</li>
-                <li><strong>unhealthy</strong> - Service is responding but with issues (status code 0)</li>
-                <li><strong>unhealthy_status</strong> - Service returned unexpected status code (status code 0)</li>
-                <li><strong>unhealthy_response_time</strong> - Service is responding too slowly (status code 0)</li>
-                <li><strong>healthy</strong> - Service has recovered and is working normally (status code 1)</li>
-            </ul>
+      <p>Sky Puppy provides flexible alerting capabilities to notify you when your services change status. This guide
+        covers setting up alerts for various platforms and best practices for effective monitoring.</p>
 
-            <div class="note">
-                <strong>Note:</strong> The <code>unhealthy_status</code> and <code>unhealthy_response_time</code> alerts are triggered when the service returns status code 0, indicating a specific type of unhealthy state.
-            </div>
+      <h2>Alert Types</h2>
+      <p>Sky Puppy supports five types of alerts:</p>
+      <ul>
+        <li><strong>down</strong> - Service is completely unavailable (status code -1)</li>
+        <li><strong>unhealthy</strong> - Service is responding but with issues (status code 0)</li>
+        <li><strong>unhealthy_status</strong> - Service returned unexpected status code (status code 0)</li>
+        <li><strong>unhealthy_response_time</strong> - Service is responding too slowly (status code 0)</li>
+        <li><strong>healthy</strong> - Service has recovered and is working normally (status code 1)</li>
+      </ul>
 
-            <h2>Discord Alerts</h2>
-            <p>Discord is one of the most popular platforms for Sky Puppy alerts due to its rich embed support.</p>
-            
-            <div class="note">
-                <strong>Setup:</strong> Create a webhook in your Discord server settings → Integrations → Webhooks
-            </div>
+      <div class="note">
+        <strong>Note:</strong> The <code>unhealthy_status</code> and <code>unhealthy_response_time</code> alerts are
+        triggered when the service returns status code 0, indicating a specific type of unhealthy state.
+      </div>
 
-            <pre><code>{
+      <h2>Discord Alerts</h2>
+      <p>Discord is one of the most popular platforms for Sky Puppy alerts due to its rich embed support.</p>
+
+      <div class="note">
+        <strong>Setup:</strong> Create a webhook in your Discord server settings → Integrations → Webhooks
+      </div>
+
+      <pre><code>{
   "alerters": {
     "discord_critical": {
       "uri": "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL",
@@ -140,14 +146,14 @@
   }
 }</code></pre>
 
-            <h2>Slack Alerts</h2>
-            <p>Slack provides excellent integration capabilities for team notifications.</p>
-            
-            <div class="note">
-                <strong>Setup:</strong> Go to your Slack workspace settings → Apps → Custom Integrations → Incoming Webhooks
-            </div>
+      <h2>Slack Alerts</h2>
+      <p>Slack provides excellent integration capabilities for team notifications.</p>
 
-            <pre><code>{
+      <div class="note">
+        <strong>Setup:</strong> Go to your Slack workspace settings → Apps → Custom Integrations → Incoming Webhooks
+      </div>
+
+      <pre><code>{
   "alerters": {
     "slack_alert": {
       "uri": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK",
@@ -190,55 +196,61 @@
 }</code></pre>
 
 
-            <h2>Template Variables</h2>
-            <p>Sky Puppy provides several template variables for use in alert messages:</p>
-            
-            <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-                <thead>
-                    <tr style="background: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Variable</th>
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Description</th>
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Example</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>{{service_name}}</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Name of the service</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"web-frontend"</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>{{alert_type}}</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Type of alert</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"down", "unhealthy", "healthy"</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>{{message}}</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Service status message</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"Connection timeout"</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>{{timestamp}}</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Current timestamp</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"2024-01-15T10:30:00Z"</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>{{last_healthy_total_duration}}</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Duration service was healthy (seconds)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"3600"</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>{{last_unhealthy_total_duration}}</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Duration service was unhealthy (seconds)</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"300"</td>
-                    </tr>
-                </tbody>
-            </table>
+      <h2>Template Variables</h2>
+      <p>Sky Puppy provides several template variables for use in alert messages:</p>
 
-            <h2>Alert Configuration</h2>
-            <p>Configure alerts in your service configuration:</p>
+      <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+        <thead>
+          <tr style="background: var(--bg-secondary);">
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Variable</th>
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Description</th>
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>{{service_name}}</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Name of the service</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"web-frontend"</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>{{alert_type}}</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Type of alert</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"down", "unhealthy", "healthy"</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>{{message}}</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Service status message</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"Connection timeout"</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>{{timestamp}}</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Current timestamp</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"2024-01-15T10:30:00Z"</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">
+              <code>{{last_healthy_total_duration}}</code>
+            </td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Duration service was healthy (seconds)
+            </td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"3600"</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">
+              <code>{{last_unhealthy_total_duration}}</code>
+            </td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Duration service was unhealthy
+              (seconds)</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">"300"</td>
+          </tr>
+        </tbody>
+      </table>
 
-            <pre><code>{
+      <h2>Alert Configuration</h2>
+      <p>Configure alerts in your service configuration:</p>
+
+      <pre><code>{
   "services": {
     "my-website": {
       "interval": 30,
@@ -280,48 +292,51 @@
   }
 }</code></pre>
 
-            <h2>Alert Options</h2>
-            <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-                <thead>
-                    <tr style="background: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Option</th>
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Type</th>
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Default</th>
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>type</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">string</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">required</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Alert type: down, unhealthy, unhealthy_status, unhealthy_response_time, healthy</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>alerter</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">string</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">required</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Name of the alerter to use</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>for</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">1</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Number of consecutive failures before alerting</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>overrides</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">object</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">{}</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Override alerter settings for this specific alert</td>
-                    </tr>
-                </tbody>
-            </table>
+      <h2>Alert Options</h2>
+      <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+        <thead>
+          <tr style="background: var(--bg-secondary);">
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Option</th>
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Type</th>
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Default</th>
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>type</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">string</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">required</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Alert type: down, unhealthy,
+              unhealthy_status, unhealthy_response_time, healthy</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>alerter</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">string</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">required</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Name of the alerter to use</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>for</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">1</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Number of consecutive failures before
+              alerting</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>overrides</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">object</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">{}</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Override alerter settings for this
+              specific alert</td>
+          </tr>
+        </tbody>
+      </table>
 
-            <h2>Best Practices</h2>
-            
-            <h3>1. Use Different Alerters for Different Severities</h3>
-            <pre><code>{
+      <h2>Best Practices</h2>
+
+      <h3>1. Use Different Alerters for Different Severities</h3>
+      <pre><code>{
   "services": {
     "critical-service": {
       "alerts": [
@@ -342,39 +357,40 @@
   }
 }</code></pre>
 
-            <h3>2. Include Relevant Information</h3>
-            <p>Always include:</p>
-            <ul>
-                <li>Service name</li>
-                <li>Current status</li>
-                <li>Duration information</li>
-                <li>Error message</li>
-                <li>Timestamp</li>
-            </ul>
+      <h3>2. Include Relevant Information</h3>
+      <p>Always include:</p>
+      <ul>
+        <li>Service name</li>
+        <li>Current status</li>
+        <li>Duration information</li>
+        <li>Error message</li>
+        <li>Timestamp</li>
+      </ul>
 
-            <h3>3. Use Appropriate Colors and Icons</h3>
-            <ul>
-                <li>🔴 Red for critical/down alerts</li>
-                <li>🟡 Yellow/Orange for warnings/unhealthy</li>
-                <li>🟢 Green for recovery/healthy</li>
-            </ul>
+      <h3>3. Use Appropriate Colors and Icons</h3>
+      <ul>
+        <li>🔴 Red for critical/down alerts</li>
+        <li>🟡 Yellow/Orange for warnings/unhealthy</li>
+        <li>🟢 Green for recovery/healthy</li>
+      </ul>
 
-            <h3>4. Set Appropriate Thresholds</h3>
-            <p>Use the <code>for</code> option to prevent false positives:</p>
-            <pre><code>{
+      <h3>4. Set Appropriate Thresholds</h3>
+      <p>Use the <code>for</code> option to prevent false positives:</p>
+      <pre><code>{
   "type": "down",
   "alerter": "discord_critical",
   "for": 3  // Only alert after 3 consecutive failures
 }</code></pre>
 
-            <div class="warning">
-                <strong>Important:</strong> Test your alerts before deploying to production. Verify webhook URLs and ensure proper formatting in your chosen platform.
-            </div>
+      <div class="warning">
+        <strong>Important:</strong> Test your alerts before deploying to production. Verify webhook URLs and ensure
+        proper formatting in your chosen platform.
+      </div>
 
-            <h2>Environment Variables</h2>
-            <p>Use environment variables for sensitive data like webhook URLs:</p>
+      <h2>Environment Variables</h2>
+      <p>Use environment variables for sensitive data like webhook URLs:</p>
 
-            <pre><code># Set environment variables
+      <pre><code># Set environment variables
 export DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/..."
 export SLACK_WEBHOOK_URL="https://hooks.slack.com/services/..."
 
@@ -388,89 +404,93 @@ export SLACK_WEBHOOK_URL="https://hooks.slack.com/services/..."
   }
 }</code></pre>
 
-            <div class="note">
-                <strong>Need Help?</strong> Join our <a href="https://github.com/Phara0h/sky-puppy/discussions" target="_blank">Discussions</a> or report issues on <a href="https://github.com/Phara0h/sky-puppy/issues" target="_blank">GitHub</a>.
-            </div>
-        </div>
+      <div class="note">
+        <strong>Need Help?</strong> Join our <a href="https://github.com/Phara0h/sky-puppy/discussions"
+          target="_blank">Discussions</a> or report issues on <a href="https://github.com/Phara0h/sky-puppy/issues"
+          target="_blank">GitHub</a>.
+      </div>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
-                        <span>Sky Puppy</span>
-                    </div>
-                    <p>Lightning-fast, reliable health monitoring for your services with Prometheus metrics and smart alerting.</p>
-                    <div class="social-links">
-                        <a href="https://github.com/Phara0h/sky-puppy" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://npmjs.com/package/sky-puppy" target="_blank">
-                            <i class="fab fa-npm"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Documentation</h4>
-                    <ul>
-                        <li><a href="getting-started.html">Getting Started</a></li>
-                        <li><a href="configuration.html">Configuration</a></li>
-                        <li><a href="alerting.html">Alerting</a></li>
-                        <li><a href="checkers.html">Custom Checkers</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Community</h4>
-                    <ul>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/issues">Issues</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/discussions">Discussions</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/CONTRIBUTING.md">Contributing</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/LICENSE">License</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-template">Checker Template</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-mongodb">MongoDB Checker</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-cloudflare-status">Cloudflare Checker</a></li>
-                        <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU">API Docs</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Sky Puppy. Made with ❤️ by the community.</p>
-            </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
+            <span>Sky Puppy</span>
+          </div>
+          <p>Lightning-fast, reliable health monitoring for your services with Prometheus metrics and smart alerting.
+          </p>
+          <div class="social-links">
+            <a href="https://github.com/Phara0h/sky-puppy" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://npmjs.com/package/sky-puppy" target="_blank">
+              <i class="fab fa-npm"></i>
+            </a>
+          </div>
         </div>
-    </footer>
+        <div class="footer-section">
+          <h4>Documentation</h4>
+          <ul>
+            <li><a href="getting-started.html">Getting Started</a></li>
+            <li><a href="configuration.html">Configuration</a></li>
+            <li><a href="alerting.html">Alerting</a></li>
+            <li><a href="checkers.html">Custom Checkers</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="https://github.com/Phara0h/sky-puppy/issues">Issues</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy/discussions">Discussions</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/CONTRIBUTING.md">Contributing</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/LICENSE">License</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="https://github.com/Phara0h/sky-puppy-checker-template">Checker Template</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy-checker-mongodb">MongoDB Checker</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy-checker-cloudflare-status">Cloudflare Checker</a></li>
+            <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU">API Docs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Sky Puppy. Made with ❤️ by the community.</p>
+      </div>
+    </div>
+  </footer>
 
-    <a href="#" class="back-to-top" id="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+  <a href="#" class="back-to-top" id="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
 
-    <script src="../script.js"></script>
-    <script>
-        // Back to top functionality
-        const backToTop = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
+  <script src="../script.js"></script>
+  <script>
+    // Back to top functionality
+    const backToTop = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
+
 </html>

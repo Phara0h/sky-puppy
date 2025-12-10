@@ -1,107 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getting Started - Sky Puppy Documentation</title>
-    <meta name="description" content="Get up and running with Sky Puppy in minutes. Complete setup guide with examples.">
-    <meta name="keywords" content="health monitoring, prometheus, alerting, discord, slack, webhooks, node.js, fastify, getting started, setup">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://sky-puppy.com/docs/getting-started.html">
-    <meta property="og:title" content="Getting Started - Sky Puppy Documentation">
-    <meta property="og:description" content="Get up and running with Sky Puppy in minutes. Complete setup guide with examples.">
-    <meta property="og:image" content="https://sky-puppy.com/images/logo.png">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://sky-puppy.com/docs/getting-started.html">
-    <meta property="twitter:title" content="Getting Started - Sky Puppy Documentation">
-    <meta property="twitter:description" content="Get up and running with Sky Puppy in minutes. Complete setup guide with examples.">
-    <meta property="twitter:image" content="https://sky-puppy.com/images/logo.png">
-    
-    <link rel="stylesheet" href="../styles.css">
-    <link rel="icon" type="image/x-icon" href="../favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started - Sky Puppy Documentation</title>
+  <meta name="description" content="Get up and running with Sky Puppy in minutes. Complete setup guide with examples.">
+  <meta name="keywords"
+    content="health monitoring, prometheus, alerting, discord, slack, webhooks, node.js, fastify, getting started, setup">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sky-puppy.com/docs/getting-started.html">
+  <meta property="og:title" content="Getting Started - Sky Puppy Documentation">
+  <meta property="og:description"
+    content="Get up and running with Sky Puppy in minutes. Complete setup guide with examples.">
+  <meta property="og:image" content="https://sky-puppy.com/images/logo.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://sky-puppy.com/docs/getting-started.html">
+  <meta property="twitter:title" content="Getting Started - Sky Puppy Documentation">
+  <meta property="twitter:description"
+    content="Get up and running with Sky Puppy in minutes. Complete setup guide with examples.">
+  <meta property="twitter:image" content="https://sky-puppy.com/images/logo.png">
+
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
-                <span>Sky Puppy</span>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="../index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../index.html#features" class="nav-link">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a href="../index.html#documentation" class="nav-link">Docs</a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://github.com/Phara0h/sky-puppy" class="nav-link" target="_blank">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </nav>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
+        <span>Sky Puppy</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="../index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="../index.html#features" class="nav-link">Features</a>
+        </li>
+        <li class="nav-item">
+          <a href="../index.html#documentation" class="nav-link">Docs</a>
+        </li>
+        <li class="nav-item">
+          <a href="https://github.com/Phara0h/sky-puppy" class="nav-link" target="_blank">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
 
-    <div class="docs-container">
-        <div class="docs-nav">
-            <ul>
-                <li><a href="getting-started.html" class="active">Getting Started</a></li>
-                <li><a href="configuration.html">Configuration</a></li>
-                <li><a href="alerting.html">Alerting</a></li>
-                <li><a href="checkers.html">Custom Checkers</a></li>
-                <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU" target="_blank">API Reference</a></li>
-            </ul>
-        </div>
+  <div class="docs-container">
+    <div class="docs-nav">
+      <ul>
+        <li><a href="getting-started.html" class="active">Getting Started</a></li>
+        <li><a href="configuration.html">Configuration</a></li>
+        <li><a href="alerting.html">Alerting</a></li>
+        <li><a href="checkers.html">Custom Checkers</a></li>
+        <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU" target="_blank">API Reference</a></li>
+      </ul>
+    </div>
 
-        <div class="docs-content">
-            <h1>Getting Started with Sky Puppy</h1>
-            
-            <p>Welcome to Sky Puppy! This guide will help you get up and running with service monitoring in just a few minutes.</p>
+    <div class="docs-content">
+      <h1>Getting Started with Sky Puppy</h1>
 
-            <div class="note">
-                <strong>Note:</strong> Sky Puppy requires Node.js 16 or higher. Make sure you have it installed before proceeding.
-            </div>
+      <p>Welcome to Sky Puppy! This guide will help you get up and running with service monitoring in just a few
+        minutes.</p>
 
-            <h2>Quick Installation</h2>
+      <div class="note">
+        <strong>Note:</strong> Sky Puppy requires Node.js 16 or higher. Make sure you have it installed before
+        proceeding.
+      </div>
 
-            <h3>Prerequisites</h3>
-            <ul>
-                <li>Node.js 16 or higher</li>
-                <li>npm or yarn package manager</li>
-                <li>Basic knowledge of JSON configuration</li>
-            </ul>
+      <h2>Quick Installation</h2>
 
-            <h3>Install Sky Puppy</h3>
-            <p>Install Sky Puppy globally using npm:</p>
-            <pre><code>npm install -g sky-puppy</code></pre>
+      <h3>Prerequisites</h3>
+      <ul>
+        <li>Node.js 16 or higher</li>
+        <li>npm or yarn package manager</li>
+        <li>Basic knowledge of JSON configuration</li>
+      </ul>
 
-            <div class="success">
-                <strong>Success!</strong> Sky Puppy is now installed and ready to use.
-            </div>
+      <h3>Install Sky Puppy</h3>
+      <p>Install Sky Puppy globally using npm:</p>
+      <pre><code>npm install -g sky-puppy</code></pre>
 
-            <h2>Your First Configuration</h2>
+      <div class="success">
+        <strong>Success!</strong> Sky Puppy is now installed and ready to use.
+      </div>
 
-            <p>Create a file called <code>sky-puppy-config.json</code> in your project directory:</p>
+      <h2>Your First Configuration</h2>
 
-            <pre><code>{
+      <p>Create a file called <code>sky-puppy-config.json</code> in your project directory:</p>
+
+      <pre><code>{
   "skypuppy": {
     "version": "1.3.8",
     "log": {
@@ -174,24 +181,24 @@
   }
 }</code></pre>
 
-            <p>This configuration will:</p>
-            <ul>
-                <li>Monitor <code>https://httpbin.org/status/200</code> every 30 seconds</li>
-                <li>Use a 5-second timeout for requests</li>
-                <li>Expect response time under 1000ms</li>
-                <li>Use the built-in HTTP request checker</li>
-                <li>Send Discord alerts for various health states</li>
-            </ul>
+      <p>This configuration will:</p>
+      <ul>
+        <li>Monitor <code>https://httpbin.org/status/200</code> every 30 seconds</li>
+        <li>Use a 5-second timeout for requests</li>
+        <li>Expect response time under 1000ms</li>
+        <li>Use the built-in HTTP request checker</li>
+        <li>Send Discord alerts for various health states</li>
+      </ul>
 
-            <h2>Start Monitoring</h2>
+      <h2>Start Monitoring</h2>
 
-            <p>Run Sky Puppy from the directory containing your configuration file:</p>
+      <p>Run Sky Puppy from the directory containing your configuration file:</p>
 
-            <pre><code>sky-puppy</code></pre>
+      <pre><code>sky-puppy</code></pre>
 
-            <p>You should see output like:</p>
+      <p>You should see output like:</p>
 
-            <pre><code>        (_      v1.3.8        _)
+      <pre><code>        (_      v1.3.8        _)
          /\                 /\
         / \'._   (\_/)   _.'/ \
        /_.''._'--('.')--'_.''._\
@@ -207,34 +214,34 @@
 [INFO] Starting service my-website ...
 [INFO] Service my-website is healthy (200ms)</code></pre>
 
-            <div class="success">
-                <strong>Congratulations!</strong> Your service is now being monitored by Sky Puppy.
-            </div>
+      <div class="success">
+        <strong>Congratulations!</strong> Your service is now being monitored by Sky Puppy.
+      </div>
 
-            <h2>Check Your Service Status</h2>
+      <h2>Check Your Service Status</h2>
 
-            <p>Sky Puppy provides a REST API to check service status:</p>
+      <p>Sky Puppy provides a REST API to check service status:</p>
 
-            <h3>Check All Services</h3>
-            <pre><code>curl http://localhost:8069/skypuppy/v1/service</code></pre>
+      <h3>Check All Services</h3>
+      <pre><code>curl http://localhost:8069/skypuppy/v1/service</code></pre>
 
-            <h3>Check Specific Service</h3>
-            <pre><code>curl http://localhost:8069/skypuppy/v1/service/my-website</code></pre>
+      <h3>Check Specific Service</h3>
+      <pre><code>curl http://localhost:8069/skypuppy/v1/service/my-website</code></pre>
 
-            <h3>Check Service Status</h3>
-            <pre><code>curl http://localhost:8069/skypuppy/v1/service/my-website/status</code></pre>
+      <h3>Check Service Status</h3>
+      <pre><code>curl http://localhost:8069/skypuppy/v1/service/my-website/status</code></pre>
 
-            <h2>View Metrics</h2>
+      <h2>View Metrics</h2>
 
-            <p>Sky Puppy exports Prometheus metrics for integration with monitoring dashboards:</p>
+      <p>Sky Puppy exports Prometheus metrics for integration with monitoring dashboards:</p>
 
-            <pre><code>curl http://localhost:8069/skypuppy/metrics</code></pre>
+      <pre><code>curl http://localhost:8069/skypuppy/metrics</code></pre>
 
-            <h2>Add Alerts</h2>
+      <h2>Add Alerts</h2>
 
-            <p>Let's add Discord alerts to get notified when your service goes down:</p>
+      <p>Let's add Discord alerts to get notified when your service goes down:</p>
 
-            <pre><code>{
+      <pre><code>{
   "alerters": {
     "discord_alert": {
       "uri": "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL",
@@ -279,14 +286,14 @@
   }
 }</code></pre>
 
-            <div class="warning">
-                <strong>Important:</strong> Replace <code>YOUR_WEBHOOK_URL</code> with your actual Discord webhook URL.
-            </div>
+      <div class="warning">
+        <strong>Important:</strong> Replace <code>YOUR_WEBHOOK_URL</code> with your actual Discord webhook URL.
+      </div>
 
-            <h2>Common Use Cases</h2>
+      <h2>Common Use Cases</h2>
 
-            <h3>Monitor Multiple Services</h3>
-            <pre><code>{
+      <h3>Monitor Multiple Services</h3>
+      <pre><code>{
   "services": {
     "web-frontend": {
       "interval": 30,
@@ -321,8 +328,8 @@
   }
 }</code></pre>
 
-            <h3>Monitor with Authentication</h3>
-            <pre><code>{
+      <h3>Monitor with Authentication</h3>
+      <pre><code>{
   "services": {
     "protected-api": {
       "interval": 30,
@@ -340,8 +347,8 @@
   }
 }</code></pre>
 
-            <h3>Monitor with Custom Health Checks</h3>
-            <pre><code>{
+      <h3>Monitor with Custom Health Checks</h3>
+      <pre><code>{
   "services": {
     "my-app": {
       "interval": 30,
@@ -361,48 +368,50 @@
   }
 }</code></pre>
 
-            <h2>Configuration Options</h2>
+      <h2>Configuration Options</h2>
 
-            <h3>Service Configuration</h3>
-            <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
-                <thead>
-                    <tr style="background: var(--bg-secondary);">
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Option</th>
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Type</th>
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Default</th>
-                        <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>interval</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">5</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Check interval in seconds</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>start_delay</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">0</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Initial delay before first check</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>expected_status</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">200</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Expected HTTP status code</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>expected_response_time</code></td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">timeout</td>
-                        <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Expected response time in milliseconds</td>
-                    </tr>
-                </tbody>
-            </table>
+      <h3>Service Configuration</h3>
+      <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+        <thead>
+          <tr style="background: var(--bg-secondary);">
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Option</th>
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Type</th>
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Default</th>
+            <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>interval</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">5</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Check interval in seconds</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>start_delay</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">0</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Initial delay before first check</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>expected_status</code></td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">200</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Expected HTTP status code</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);"><code>expected_response_time</code>
+            </td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">number</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">timeout</td>
+            <td style="padding: 0.75rem; border: 1px solid var(--border-color);">Expected response time in milliseconds
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-            <h3>Environment Variables</h3>
-            <pre><code># Custom port (default: 8069)
+      <h3>Environment Variables</h3>
+      <pre><code># Custom port (default: 8069)
 export SKY_PUPPY_PORT=9000
 
 # Custom config file path
@@ -411,35 +420,35 @@ export SKY_PUPPY_CONFIG_PATH=/path/to/config.json
 # Custom IP (default: 0.0.0.0)
 export SKY_PUPPY_IP=127.0.0.1</code></pre>
 
-            <h2>Troubleshooting</h2>
+      <h2>Troubleshooting</h2>
 
-            <h3>Common Issues</h3>
+      <h3>Common Issues</h3>
 
-            <h4>Service not starting</h4>
-            <ul>
-                <li>Check your JSON syntax</li>
-                <li>Verify the URI is accessible</li>
-                <li>Check network connectivity</li>
-            </ul>
+      <h4>Service not starting</h4>
+      <ul>
+        <li>Check your JSON syntax</li>
+        <li>Verify the URI is accessible</li>
+        <li>Check network connectivity</li>
+      </ul>
 
-            <h4>Alerts not sending</h4>
-            <ul>
-                <li>Verify webhook URLs</li>
-                <li>Check network connectivity</li>
-                <li>Test webhook manually with curl</li>
-            </ul>
+      <h4>Alerts not sending</h4>
+      <ul>
+        <li>Verify webhook URLs</li>
+        <li>Check network connectivity</li>
+        <li>Test webhook manually with curl</li>
+      </ul>
 
-            <h4>High response times</h4>
-            <ul>
-                <li>Increase timeout values</li>
-                <li>Check network latency</li>
-                <li>Consider using closer endpoints</li>
-            </ul>
+      <h4>High response times</h4>
+      <ul>
+        <li>Increase timeout values</li>
+        <li>Check network latency</li>
+        <li>Consider using closer endpoints</li>
+      </ul>
 
-            <h3>Debug Mode</h3>
-            <p>Enable debug logging to get more detailed information:</p>
+      <h3>Debug Mode</h3>
+      <p>Enable debug logging to get more detailed information:</p>
 
-            <pre><code>{
+      <pre><code>{
   "skypuppy": {
     "log": {
       "level": "debug"
@@ -447,100 +456,105 @@ export SKY_PUPPY_IP=127.0.0.1</code></pre>
   }
 }</code></pre>
 
-            <h2>Next Steps</h2>
+      <h2>Next Steps</h2>
 
-            <p>Now that you have Sky Puppy running, explore these features:</p>
+      <p>Now that you have Sky Puppy running, explore these features:</p>
 
-            <ul>
-                <li><a href="configuration.html">Configuration Guide</a> - Detailed configuration options</li>
-                <li><a href="alerting.html">Alerting Guide</a> - Set up notifications for various platforms</li>
-                <li><a href="checkers.html">Custom Checkers</a> - Create checkers for your specific services</li>
-                <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU" target="_blank">API Reference</a> - Full API documentation</li>
-            </ul>
+      <ul>
+        <li><a href="configuration.html">Configuration Guide</a> - Detailed configuration options</li>
+        <li><a href="alerting.html">Alerting Guide</a> - Set up notifications for various platforms</li>
+        <li><a href="checkers.html">Custom Checkers</a> - Create checkers for your specific services</li>
+        <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU" target="_blank">API Reference</a> - Full
+          API documentation</li>
+      </ul>
 
-            <div class="note">
-                <strong>Need Help?</strong> Join our <a href="https://github.com/Phara0h/sky-puppy/discussions" target="_blank">Discussions</a> or report issues on <a href="https://github.com/Phara0h/sky-puppy/issues" target="_blank">GitHub</a>.
-            </div>
-        </div>
+      <div class="note">
+        <strong>Need Help?</strong> Join our <a href="https://github.com/Phara0h/sky-puppy/discussions"
+          target="_blank">Discussions</a> or report issues on <a href="https://github.com/Phara0h/sky-puppy/issues"
+          target="_blank">GitHub</a>.
+      </div>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
-                        <span>Sky Puppy</span>
-                    </div>
-                    <p>Lightning-fast, reliable health monitoring for your services with Prometheus metrics and smart alerting.</p>
-                    <div class="social-links">
-                        <a href="https://github.com/Phara0h/sky-puppy" target="_blank">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://npmjs.com/package/sky-puppy" target="_blank">
-                            <i class="fab fa-npm"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-section">
-                    <h4>Documentation</h4>
-                    <ul>
-                        <li><a href="getting-started.html">Getting Started</a></li>
-                        <li><a href="configuration.html">Configuration</a></li>
-                        <li><a href="alerting.html">Alerting</a></li>
-                        <li><a href="checkers.html">Custom Checkers</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Community</h4>
-                    <ul>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/issues">Issues</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/discussions">Discussions</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/CONTRIBUTING.md">Contributing</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/LICENSE">License</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-template">Checker Template</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-mongodb">MongoDB Checker</a></li>
-                        <li><a href="https://github.com/Phara0h/sky-puppy-checker-cloudflare-status">Cloudflare Checker</a></li>
-                        <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU">API Docs</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Sky Puppy. Made with ❤️ by the community.</p>
-            </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <img src="../images/logo.png" alt="Sky Puppy Logo" class="logo-img" />
+            <span>Sky Puppy</span>
+          </div>
+          <p>Lightning-fast, reliable health monitoring for your services with Prometheus metrics and smart alerting.
+          </p>
+          <div class="social-links">
+            <a href="https://github.com/Phara0h/sky-puppy" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://npmjs.com/package/sky-puppy" target="_blank">
+              <i class="fab fa-npm"></i>
+            </a>
+          </div>
         </div>
-    </footer>
+        <div class="footer-section">
+          <h4>Documentation</h4>
+          <ul>
+            <li><a href="getting-started.html">Getting Started</a></li>
+            <li><a href="configuration.html">Configuration</a></li>
+            <li><a href="alerting.html">Alerting</a></li>
+            <li><a href="checkers.html">Custom Checkers</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="https://github.com/Phara0h/sky-puppy/issues">Issues</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy/discussions">Discussions</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/CONTRIBUTING.md">Contributing</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy/blob/main/LICENSE">License</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="https://github.com/Phara0h/sky-puppy-checker-template">Checker Template</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy-checker-mongodb">MongoDB Checker</a></li>
+            <li><a href="https://github.com/Phara0h/sky-puppy-checker-cloudflare-status">Cloudflare Checker</a></li>
+            <li><a href="https://documenter.getpostman.com/view/208035/TVYKawgU">API Docs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Sky Puppy. Made with ❤️ by the community.</p>
+      </div>
+    </div>
+  </footer>
 
-    <a href="#" class="back-to-top" id="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
+  <a href="#" class="back-to-top" id="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </a>
 
-    <script src="../script.js"></script>
-    <script>
-        // Back to top functionality
-        const backToTop = document.getElementById('back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-        
-        backToTop.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    </script>
+  <script src="../script.js"></script>
+  <script>
+    // Back to top functionality
+    const backToTop = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    });
+
+    backToTop.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  </script>
 </body>
-</html> 
+
+</html>
