@@ -36,4 +36,5 @@ module.exports = function (fastify, opts) {
   fastify.get('/services/metrics', (req, res) => {
     res.code(200).send(stats.toPrometheus());
   });
+  console.log('Service routes loaded');
 };

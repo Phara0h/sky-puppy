@@ -7,7 +7,7 @@ const nstats = require('nstats')();
 const app = require('fastify')({
   logger: false
 });
-const stats = new Stats();
+
 const NBars = require('nbars/commonjs.js');
 
 async function start() {
@@ -26,7 +26,22 @@ async function start() {
       })
     );
   });
+  app.register(require('./routes/v1/config.js'), {
+    prefix: '/skypuppy/v1',
+    stats,
+    healthCheck
+  });
+  app.register(require('./routes/v1/alerter.js'), {
+    prefix: '/skypuppy/v1',
+    stats,
+    healthCheck
+  });
 
+  app.register(require('./routes/v1/service.js'), {
+    prefix: '/skypuppy/v1',
+    stats,
+    healthCheck
+  });
   app.get('/skypuppy/metrics', (req, res) => {
     res.code(200).send(nstats.toPrometheus());
   });
@@ -40,19 +55,13 @@ async function start() {
     ignored_routes: ['/skypuppy/metrics', '/skypuppy/health']
   });
 
-  app.register(require('./routes/v1'), {
-    prefix: '/skypuppy/v1',
-    stats,
-    healthCheck
-  });
-
+ 
   app.ready(() => {
-    //console.log(app.printRoutes());
+    console.log(app.printRoutes());
   });
 
   app.listen(
-    process.env.SKY_PUPPY_PORT || 8069,
-    process.env.SKY_PUPPY_IP || '0.0.0.0'
+    { port: process.env.SKY_PUPPY_PORT || 8069, host: process.env.SKY_PUPPY_IP || '0.0.0.0' }
   );
 }
 start();
