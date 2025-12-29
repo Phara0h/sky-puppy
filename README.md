@@ -319,7 +319,13 @@ This project is licensed under the GPL-3.0-or-later License - see the [LICENSE](
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.5.5](https://github.com/Phara0h/sky-puppy/compare/v1.5.4...v1.5.5)
+
+#####   [`a8d0908`](https://github.com/Phara0h/sky-puppy/commit/a8d0908277781ed5537d90337f414e32707ef24a)updated fastify which fixed routes
+
 #### [v1.5.4](https://github.com/Phara0h/sky-puppy/compare/v1.5.3...v1.5.4)
+
+> 29 December 2025
 
 #####   [`65a3dee`](https://github.com/Phara0h/sky-puppy/commit/65a3deeb30de6e304e5863d0903990420938f5c2)updated nstats
 
