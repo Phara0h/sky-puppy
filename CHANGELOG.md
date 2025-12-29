@@ -1,6 +1,12 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.5.2](https://github.com/Phara0h/sky-puppy/compare/v1.5.1...v1.5.2)
+
+#####   [`b43e29e`](https://github.com/Phara0h/sky-puppy/commit/b43e29efa720f56d1fba18db2f1790671a373878)Update alerts.js
+
 #### [v1.5.1](https://github.com/Phara0h/sky-puppy/compare/v1.5.0...v1.5.1)
+
+> 29 December 2025
 
 #####   [`63b8611`](https://github.com/Phara0h/sky-puppy/commit/63b861157fcbbc4b7bb47cd2c76091574c9e7531)Fixed "enabled" being set in config and being ignored
 
