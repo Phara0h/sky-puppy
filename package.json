@@ -2,7 +2,7 @@
   "name": "sky-puppy",
   "version": "1.5.0",
   "description": "A easy to use reliable health checking service with Prometheus export",
-  "main": "./src/index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "NODE_ENV=production node src/index.js ",
     "test": "SKY_PUPPY_CONFIG_PATH=./test node src/index.js",
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/Phara0h/sky-puppy.git"
   },
   "bin": {
-    "sky-puppy": "./src/index.js"
+    "sky-puppy": "src/index.js"
   },
   "keywords": [
     "prometheus",

@@ -111,7 +111,7 @@ class HealthCheck {
       log.info(`Starting service ${name} ...`);
       var nService = {
         name,
-        enabled: true,
+        enabled: service.enabled !== false,
         checker: {},
         config: {
           ...service,
