@@ -183,14 +183,10 @@ class Alerts {
 
           if (service.status.message && typeof service.status.message === 'object') {
             messageValue = JSON.stringify(service.status.message, null, 2);
-            // If inserting into JSON template, escape control characters for proper JSON string insertion
+            // If inserting into JSON template, use JSON.stringify to properly escape all control characters
             if (request.json) {
-              messageValue = messageValue
-                .replace(/\\/g, '\\\\')
-                .replace(/"/g, '\\"')
-                .replace(/\n/g, '\\n')
-                .replace(/\r/g, '\\r')
-                .replace(/\t/g, '\\t');
+              // JSON.stringify will properly escape all control characters, then remove outer quotes
+              messageValue = JSON.stringify(messageValue).slice(1, -1);
             }
           }
 
