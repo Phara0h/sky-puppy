@@ -77,7 +77,7 @@ app.all('/redirect/loop/:count', (req, res) => {
   res.redirect('/redirect/loop/' + ++req.params.count);
 });
 
-app.all('/redirect/loop/', (req, res) => {
+app.all('/redirect/loop', (req, res) => {
   log(req, res);
   res.redirect('/redirect/loop');
 });
@@ -94,11 +94,11 @@ app.all('/error/flipflop', (req, res) => {
   if (!errorFlipflop) {
     res.status(500);
     errorFlipflop = true;
-    res.send();
+    res.send('Error Flipflop: ' + errorFlipflop);
   } else {
     errorFlipflop = false;
     res.status(200);
-    res.send();
+    res.send('Error Flipflop: ' + errorFlipflop);
   }
 });
 
@@ -130,8 +130,28 @@ app.all('/success/in/:num', (req, res) => {
 
 app.all('/error/random', (req, res) => {
   log(req, res);
-  res.status(Math.round(Math.random()) > 0 ? 200 : 500);
-  res.send();
+  var status = Math.round(Math.random()) > 0 ? 200 : 500;
+
+  res.status(status);
+  res.send('Status: ' + status);
+});
+
+app.all('/error/flipflop/object', (req, res) => {
+  log(req, res);
+  if (!errorFlipflop) {
+    errorFlipflop = true;
+    res.status(500).send({
+      message: 'This is an error object',
+      code: 500,
+      data: {
+        name: 'John Doe',
+        age: 30
+      }
+    });
+  } else {
+    errorFlipflop = false;
+    res.status(200).send();
+  }
 });
 
 app.all('/wait/random/:start/:end', async (req, res) => {
@@ -174,9 +194,8 @@ function getRandomInt(min, max) {
 // app.all(['/:param1/:param2/:param3/:param4'], response);
 
 app.all('/alert/test', (request, res) => {
-  console.log(
-    `${request.body.embeds[0].title} : ${request.body.embeds[0].description}`
-  );
+
+  console.log(JSON.stringify(request.body, null, 2));
   res.status(200).send();
 });
 

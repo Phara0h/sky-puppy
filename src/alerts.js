@@ -179,12 +179,27 @@ class Alerts {
         var request = { ...this.alerters[alert.alerter].request, ...overrides };
 
         if (request.body) {
+          var messageValue = service.status.message || '';
+
+          if (service.status.message && typeof service.status.message === 'object') {
+            messageValue = JSON.stringify(service.status.message, null, 2);
+            // If inserting into JSON template, escape control characters for proper JSON string insertion
+            if (request.json) {
+              messageValue = messageValue
+                .replace(/\\/g, '\\\\')
+                .replace(/"/g, '\\"')
+                .replace(/\n/g, '\\n')
+                .replace(/\r/g, '\\r')
+                .replace(/\t/g, '\\t');
+            }
+          }
+
           request.body = this.nbars.transform(
             request.json ? JSON.stringify(request.body) : request.body,
             {
               alert_type: alert.type,
               service_name: service.name,
-              message: service.status.message || '',
+              message: messageValue,
               timestamp: new Date().toISOString(),
               last_unhealthy_total_duration:
                 service.status.last_unhealthy_total_duration || 'Unknown',

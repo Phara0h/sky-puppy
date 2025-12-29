@@ -207,6 +207,30 @@
                     "alerter": "discord_healthy"
                 }
             ]
+        },
+        "object-test": {
+            "interval": 1,
+            "checker": {
+                "name": "request",
+                "settings": {
+                    "uri": "http://127.0.0.1:4270/error/flipflop/object",
+                    "timeout": 2
+                }
+            },
+            "alerts": [
+                {
+                    "type": "down",
+                    "alerter": "discord_down"
+                },
+                {
+                    "type": "unhealthy",
+                    "alerter": "discord_unhealthy"
+                },
+                {
+                    "type": "healthy",
+                    "alerter": "discord_healthy"
+                }
+            ]
         }
     },
     "skypuppy": {
