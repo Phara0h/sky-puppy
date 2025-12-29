@@ -319,7 +319,13 @@ This project is licensed under the GPL-3.0-or-later License - see the [LICENSE](
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.5.3](https://github.com/Phara0h/sky-puppy/compare/v1.5.2...v1.5.3)
+
+#####   [`b2d23f6`](https://github.com/Phara0h/sky-puppy/commit/b2d23f6cfd9af440c6b0d08478d7fc8ad84ec2a1)Update alerts.js
+
 #### [v1.5.2](https://github.com/Phara0h/sky-puppy/compare/v1.5.1...v1.5.2)
+
+> 29 December 2025
 
 #####   [`b43e29e`](https://github.com/Phara0h/sky-puppy/commit/b43e29efa720f56d1fba18db2f1790671a373878)Update alerts.js
 
