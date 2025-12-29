@@ -319,7 +319,13 @@ This project is licensed under the GPL-3.0-or-later License - see the [LICENSE](
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.5.1](https://github.com/Phara0h/sky-puppy/compare/v1.5.0...v1.5.1)
+
+#####   [`63b8611`](https://github.com/Phara0h/sky-puppy/commit/63b861157fcbbc4b7bb47cd2c76091574c9e7531)Fixed "enabled" being set in config and being ignored
+
 #### [v1.5.0](https://github.com/Phara0h/sky-puppy/compare/v1.4.1...v1.5.0)
+
+> 29 December 2025
 
 #####   [`6fdef5f`](https://github.com/Phara0h/sky-puppy/commit/6fdef5f824f259ef96771b04d5704a7934a8d30f)Added json parsing to the messages for alerts
 
