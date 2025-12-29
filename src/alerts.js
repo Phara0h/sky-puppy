@@ -210,8 +210,9 @@ class Alerts {
           );
 
           if (request.json) {
-            //log.debug(request.body);
-            request.body = JSON.parse(request.body);
+            try {
+              request.body = JSON.parse(request.body);
+            } catch (e) {}
           }
         }
         //log.log(request.body)
