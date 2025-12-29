@@ -1,6 +1,16 @@
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.5.0](https://github.com/Phara0h/sky-puppy/compare/v1.4.1...v1.5.0)
+
+#####   [`6fdef5f`](https://github.com/Phara0h/sky-puppy/commit/6fdef5f824f259ef96771b04d5704a7934a8d30f)Added json parsing to the messages for alerts
+
+#####   [`3423623`](https://github.com/Phara0h/sky-puppy/commit/342362378dbcfca3f95921ffb32eb7b31a646acf)siteupdates
+
+#####   [`92272ce`](https://github.com/Phara0h/sky-puppy/commit/92272ce9fec8205106e117d10ebeeaa343fb239e)fixed a space
+
 #### [v1.4.1](https://github.com/Phara0h/sky-puppy/compare/v1.4.0...v1.4.1)
+
+> 10 July 2025
 
 #####   [`370545f`](https://github.com/Phara0h/sky-puppy/commit/370545f249af288ef411ccd7b9163f0c3f540264)update mdsquash
 

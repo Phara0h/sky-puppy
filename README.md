@@ -9,15 +9,15 @@ Sky Puppy is a powerful, lightweight health monitoring service that keeps your a
 
 ## ✨ Features
 
-- **Lightning Fast**: Built with Fastify for exceptional performance
-- **Multiple Checkers**: HTTP/HTTPS, MongoDB, Cloudflare Status, and custom checkers
-- **Prometheus Metrics**: Built-in metrics export for monitoring dashboards
-- **Smart Alerting**: Discord, Slack, and custom webhook integrations
-- **Real-time Monitoring**: Configurable check intervals down to seconds
-- **Reliable**: Robust error handling and automatic recovery
-- **Easy Configuration**: Simple JSON configuration
-- **RESTful API**: Full API for dynamic service management
-- **Health Status Tracking**: Detailed uptime and performance metrics
+- 🚀 **Lightning Fast**: Built with Fastify for exceptional performance
+- 🔍 **Multiple Checkers**: HTTP/HTTPS, MongoDB, Cloudflare Status, and custom checkers
+- 📊 **Prometheus Metrics**: Built-in metrics export for monitoring dashboards
+- 🔔 **Smart Alerting**: Discord, Slack, and custom webhook integrations
+- ⚡ **Real-time Monitoring**: Configurable check intervals down to seconds
+- 🛡️ **Reliable**: Robust error handling and automatic recovery
+- 🔧 **Easy Configuration**: Simple JSON configuration
+- 🌐 **RESTful API**: Full API for dynamic service management
+- 📈 **Health Status Tracking**: Detailed uptime and performance metrics
 
 ## 🚀 Quick Start
 
@@ -319,7 +319,17 @@ This project is licensed under the GPL-3.0-or-later License - see the [LICENSE](
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+#### [v1.5.0](https://github.com/Phara0h/sky-puppy/compare/v1.4.1...v1.5.0)
+
+#####   [`6fdef5f`](https://github.com/Phara0h/sky-puppy/commit/6fdef5f824f259ef96771b04d5704a7934a8d30f)Added json parsing to the messages for alerts
+
+#####   [`3423623`](https://github.com/Phara0h/sky-puppy/commit/342362378dbcfca3f95921ffb32eb7b31a646acf)siteupdates
+
+#####   [`92272ce`](https://github.com/Phara0h/sky-puppy/commit/92272ce9fec8205106e117d10ebeeaa343fb239e)fixed a space
+
 #### [v1.4.1](https://github.com/Phara0h/sky-puppy/compare/v1.4.0...v1.4.1)
+
+> 10 July 2025
 
 #####   [`370545f`](https://github.com/Phara0h/sky-puppy/commit/370545f249af288ef411ccd7b9163f0c3f540264)update mdsquash
 
